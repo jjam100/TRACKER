@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.tracker">
+    package="com.teamTK.tracker">
 
     <application
         android:allowBackup="true"
@@ -9,12 +9,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".List"></activity>
-        <activity android:name=".Mood" />
-        <activity android:name=".Main">
+        <activity android:name="com.teamTK.tracker.ChangePWActivity" />
+        <activity android:name="com.teamTK.tracker.HomeActivity" />
+        <activity android:name="com.teamTK.tracker.List" />
+        <activity android:name="com.teamTK.tracker.Mood" />
+        <activity android:name="com.teamTK.tracker.ResetPWActivity" />
+        <activity android:name="com.teamTK.tracker.SignInActivity" />
+        <activity android:name="com.teamTK.tracker.SignUpActivity" />
+        <activity android:name="com.teamTK.tracker.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
