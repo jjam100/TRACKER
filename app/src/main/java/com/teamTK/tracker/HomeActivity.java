@@ -28,6 +28,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.UploadTask;
+import com.teamTK.tracker.common.FCMPush;
 import com.teamTK.tracker.common.Util9;
 import com.teamTK.tracker.model.UserModel;
 
@@ -184,8 +185,8 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     Button.OnClickListener toastdevBtnClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-//            String input = "TRACKER DEV 푸시알림입니다.";
-//            테스트
+            FCMPush fcmPush = new FCMPush(regToken);
+            fcmPush.sendMessage();
         }
     };
 
@@ -203,22 +204,6 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         Util9.hideKeyboard(this);
 
         return valid;
-    }
-
-    public void toastSend(String input) {
-        JSONObject requestData = new JSONObject();
-
-        try {
-            requestData.put("priority", "high");
-            JSONObject dataObj = new JSONObject();
-            dataObj.put("contents", input);
-            requestData.put("data", dataObj);
-
-            JSONArray idArray = new JSONArray();
-//            여기서부터
-        } catch (Exception e) {
-            e.printStackTrace();;
-        }
     }
 
     @Override

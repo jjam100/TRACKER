@@ -7,10 +7,12 @@ import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.IBinder;
+import android.os.PowerManager;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
@@ -25,17 +27,53 @@ public class TkFirebaseMessagingService extends FirebaseMessagingService {
 
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
-        Log.d(TAG, "onMessageReceived() 호출됨");
-        if(remoteMessage.getData() == null)
-            return;
+        Log.d(TAG, "From: " + remoteMessage.getFrom());
+        // 메시지에는 두가지 종류가 있다고 한다...
+        // 1. 메시지가 data payload를 포함하는 경우...
+        if (remoteMessage.getData().size() > 0) {
+            Log.d(TAG, "Message data payload: " + remoteMessage.getData());
+            if (/* Check if data needs to be processed by long running job */ true) {
+                // For long-running tasks (10 seconds or more) use Firebase Job Dispatcher.
+                scheduleJob();
+            } else {
+                // Handle message within 10 seconds
+                handleNow();
+            }
+        }
+        // 2. 메시지가 notification payload를 포함하는 경우...
+        if (remoteMessage.getNotification() != null) {
+            Log.d(TAG, "Message Notification Body: " + remoteMessage.getNotification().getBody());
+        }
+
+        //String title = remoteMessage.getNotification().getTitle();
+        //String body = remoteMessage.getNotification().getBody();
+        String title = remoteMessage.getData().get("title");
+        String body = remoteMessage.getData().get("content");
+        String click_action = remoteMessage.getData().get("clickAction");
+        sendNotification(title, body, click_action);
     }
 
-    private void sendNotification(String title, String content) {
+    // 아래 둘은 나중에 알아 볼것.
+    private void scheduleJob() {
+        Log.d(TAG, "스케쥴잡.");
+    }
+    private void handleNow() {
+        Log.d(TAG, "10초이내 처리됨");
+    }
+
+    private void sendNotification(String title, String content, String click_action) {
         if(title == null)
             title = "TRACKER 알림입니다";
 
-        Intent intent = new Intent(this, MainActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        Intent intent;
+        if (click_action.equals("MainActivity")) {
+            intent = new Intent(this, MainActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        } else {
+            intent = new Intent(this, MainActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        }
+
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_ONE_SHOT);
         Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
 
@@ -53,6 +91,7 @@ public class TkFirebaseMessagingService extends FirebaseMessagingService {
             mChannel.enableVibration(true);
             mChannel.setVibrationPattern(new long[] { 100, 200, 100, 200 });
             mChannel.setSound(defaultSoundUri, null);
+            mChannel.setLightColor(Color.GREEN);
             mChannel.setLockscreenVisibility(Notification.VISIBILITY_PRIVATE);
             mManager.createNotificationChannel(mChannel);
         }
@@ -64,10 +103,12 @@ public class TkFirebaseMessagingService extends FirebaseMessagingService {
         // 나중에 우리 아이콘 크기별로 조정해서 집어넣어야...
         builder.setSmallIcon(R.mipmap.ic_launcher);
         builder.setContentText(content);
+        builder.setContentIntent(pendingIntent);
+        builder.setContentTitle(title);
         if(Build.VERSION.SDK_INT < Build.VERSION_CODES.O) {
             // 아래 설정은 오레오부터 deprecated 되면서 NotificationChannel에서 동일기능을 하는 메소드를 사용
-            builder.setContentTitle(title);
             builder.setSound(defaultSoundUri);
+            builder.setLights(Color.GREEN, 1, 1);
             builder.setVibrate(new long[] { 500, 500 });
         }
 
