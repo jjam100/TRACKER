@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.teamTK.tracker">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,19 +12,34 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.teamTK.tracker.ChangePWActivity" />
-        <activity android:name="com.teamTK.tracker.HomeActivity" />
-        <activity android:name="com.teamTK.tracker.List" />
-        <activity android:name="com.teamTK.tracker.Mood" />
-        <activity android:name="com.teamTK.tracker.ResetPWActivity" />
-        <activity android:name="com.teamTK.tracker.SignInActivity" />
-        <activity android:name="com.teamTK.tracker.SignUpActivity" />
-        <activity android:name="com.teamTK.tracker.MainActivity">
+        <service
+            android:name=".TkFirebaseMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
+        <!--<meta-data-->
+            <!--android:name="com.google.firebase.messaging.default_notification_channel_id"-->
+            <!--android:value="@string/default_notification_channel_id"/>-->
+
+        <activity android:name=".ChangePWActivity" />
+        <activity android:name=".HomeActivity" />
+        <activity android:name=".List" />
+        <activity android:name=".Mood" />
+        <activity android:name=".ResetPWActivity" />
+        <activity android:name=".SignInActivity" />
+        <activity android:name=".SignUpActivity" />
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="e621264762831cad283d48aaffb6e34ff727afd4" />
     </application>
 
 </manifest>
