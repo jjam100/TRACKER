@@ -5,8 +5,10 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,10 +19,15 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.FirebaseDatabase;
 import com.teamTK.tracker.model.UserModel;
 
 public class SignUpActivity extends AppCompatActivity implements View.OnClickListener {
+    //다른 액티비티를 띄우기 위한 요청코드(상수)
+    public static final int REQUEST_CODE_MENU = 103;
+    public static final String KEY_INTENT_DATA = "deviceToken";
+    private static final String TAG = "TkMS_SignUp";
     //define view objects
     EditText editTextEmail;
     EditText editTextPassword;
@@ -29,15 +36,21 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
     TextView textviewMessage;
     ProgressDialog progressDialog;
     SharedPreferences sharedPreferences;
-    //define firebase object
+    // 파이어베이스 오브젝트
     FirebaseAuth firebaseAuth;
+    // FCM을 위한 단말의 등록 토큰
+    String regToken;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
 
-        //initializig firebase auth object
+        // 전달 받은 인텐트 확인
+        Intent intent = getIntent();
+        processIntent(intent);
+
+        // FirebaseAuth 오브젝트 초기화
         firebaseAuth = FirebaseAuth.getInstance();
 
         if(firebaseAuth.getCurrentUser() != null){
@@ -59,12 +72,20 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         textviewSingin.setOnClickListener(this);
     }
 
-    //Firebse creating a new user
-    private void registerUser(){
-        //사용자가 입력하는 email, password를 가져온다.
+    private void processIntent (Intent intent) {
+        if (intent != null) {
+            Bundle bundle = intent.getExtras();
+            regToken = (String) bundle.getString(KEY_INTENT_DATA);
+            Log.d(TAG, "넘겨받은 데이터 : " + regToken);
+        }
+    }
+
+    // Firebase에 새 유저 생성
+    private void registerUser() {
+        // 사용자가 입력하는 email, password를 가져온다.
         final String email = editTextEmail.getText().toString().trim();
         String password = editTextPassword.getText().toString().trim();
-        //email과 password가 비었는지 아닌지를 체크 한다.
+        // email과 password가 비었는지 아닌지를 체크 한다.
         if(TextUtils.isEmpty(email)){
             Toast.makeText(this, "Email을 입력해 주세요.", Toast.LENGTH_SHORT).show();
             return;
@@ -73,11 +94,11 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
             Toast.makeText(this, "Password를 입력해 주세요.", Toast.LENGTH_SHORT).show();
         }
 
-        //email과 password가 제대로 입력되어 있다면 계속 진행된다.
+        // email과 password가 제대로 입력되어 있다면 계속 진행된다.
         progressDialog.setMessage("등록중입니다. 기다려 주세요...");
         progressDialog.show();
 
-        //creating a new user
+        // 새 유저 생성
         firebaseAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -88,19 +109,36 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
                             userModel.setUid(uid);
                             userModel.setUserid(email);
                             userModel.setUsernm(extractIDFromEmail(email));
+                            userModel.setToken(regToken);
                             FirebaseDatabase.getInstance().getReference().child("users").child(uid).setValue(userModel).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
-                                    Intent  intent = new Intent(SignUpActivity.this, MainActivity.class);
-                                    firebaseAuth.signOut();
-                                    startActivity(intent);
-                                    finish();
+                                    FirebaseUser user = firebaseAuth.getCurrentUser();
+                                    // 해당기기의 언어 설정
+                                    firebaseAuth.useAppLanguage();
+                                    // 이메일 인증 전송
+                                    user.sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
+                                            if (task.isSuccessful()) {
+                                                Log.d(TAG, "이메일 전송 성공");
+                                                Toast.makeText(SignUpActivity.this, "회원가입이 완료되었습니다!\n이메일을 확인해주세요!", Toast.LENGTH_SHORT).show();
+                                                Intent  intent = new Intent(SignUpActivity.this, MainActivity.class);
+                                                firebaseAuth.signOut();
+                                                startActivity(intent);
+                                                finish();
+                                            } else {
+                                                Log.d(TAG, "이메일 전송 실패");
+                                                Toast.makeText(SignUpActivity.this, "이메일 전송에 실패하였습니다.\n관리자에게 문의주시기 바랍니다.", Toast.LENGTH_SHORT).show();
+                                            }
+                                        }
+                                    });
                                 }
                             });
                         } else {
                             //에러발생시
                             textviewMessage.setText("에러유형\n - 이미 등록된 이메일  \n -암호 최소 6자리 이상 \n - 서버에러");
-                            //Snackbar.make(v, "등록 에러!", Snackbar.LENGTH_LONG).show();
+                            //Snackbar.make(getWindow().getDecorView().getRootView(), "등록 에러!", Snackbar.LENGTH_LONG).show();
                             Toast.makeText(SignUpActivity.this, "등록 에러!", Toast.LENGTH_SHORT).show();
                         }
                         progressDialog.dismiss();
@@ -109,12 +147,13 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
 
     }
 
-    String extractIDFromEmail(String email){
+    // 이메일에서 @의 앞부분을 닉네임으로 설정
+    String extractIDFromEmail(String email) {
         String[] parts = email.split("@");
         return parts[0];
     }
 
-    //button click event
+    // 버튼 클릭 이벤트
     @Override
     public void onClick(View view) {
         if(view == buttonSignup) {

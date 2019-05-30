@@ -57,6 +57,11 @@
             android:text="리스트로"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
+        <Button
+            android:id="@+id/push_dev"
+            android:text="푸시알림 테스트"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
         <Button
             android:id="@+id/buttonLogout"

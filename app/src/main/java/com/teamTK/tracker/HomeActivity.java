@@ -9,6 +9,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -30,8 +31,12 @@ import com.google.firebase.storage.UploadTask;
 import com.teamTK.tracker.common.Util9;
 import com.teamTK.tracker.model.UserModel;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 public class HomeActivity extends AppCompatActivity implements View.OnClickListener {
-    private static final String TAG = "HomeActivity";
+    public static final int REQUEST_CODE_MENU = 104;
+    private static final String TAG = "TkMS_HOME";
     private static final int PICK_FROM_ALBUM = 1;
     private ImageView user_photo;
     private EditText user_id;
@@ -39,6 +44,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     private Button saveBtn;
     private Button changePWBtn;
     private Button enterBtn;
+    private Button pushdevBtn;
 
     private UserModel userModel;
     private Uri userPhotoUri;
@@ -49,6 +55,9 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     //view objects
     private Button buttonLogout;
     private TextView textivewDelete;
+
+    // FCM을 위한 단말의 등록 토큰
+    String regToken;
 
 
     @Override
@@ -71,6 +80,9 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         saveBtn.setOnClickListener(saveBtnClickListener);
         changePWBtn = (Button) findViewById(R.id.changePWBtn);
         changePWBtn.setOnClickListener(changePWBtnClickListener);
+        pushdevBtn = (Button) findViewById(R.id.push_dev);
+        pushdevBtn.setOnClickListener(toastdevBtnClickListener);
+
 
         //initializing firebase authentication object
         firebaseAuth = FirebaseAuth.getInstance();
@@ -84,9 +96,6 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         FirebaseUser user = firebaseAuth.getCurrentUser();
         getUserInfoFromServer();
 
-        //textViewUserEmail의 내용을 변경해 준다.
-       // textViewUserEmail.setText("반갑습니다.\n"+ user.getEmail()+"으로 로그인 하였습니다.");
-
         //logout button event
         buttonLogout.setOnClickListener(this);
         enterBtn.setOnClickListener(this);
@@ -95,12 +104,16 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
     void getUserInfoFromServer(){
         String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        Log.d(TAG, "사용자 uid : " + uid);
         FirebaseDatabase.getInstance().getReference().child("users").child(uid).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 userModel = dataSnapshot.getValue(UserModel.class);
                 user_id.setText(userModel.getUserid());
                 user_name.setText(userModel.getUsernm());
+                regToken = userModel.getToken();
+                Log.d(TAG, "사용자 user_id : " + userModel.getUserid());
+                Log.d(TAG, "사용자 user_name : " + userModel.getUsernm());
                 if (userModel.getUserphoto()!= null && !"".equals(userModel.getUserphoto())) {
                     Glide.with(HomeActivity.this)
                             .load(FirebaseStorage.getInstance().getReference("userPhoto/"+userModel.getUserphoto()))
@@ -161,9 +174,18 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     };
 
     Button.OnClickListener changePWBtnClickListener = new View.OnClickListener() {
+        @Override
         public void onClick(final View view) {
             //getFragmentManager().beginTransaction().replace(R.id.container, new UserPWFragment()).commit();
             startActivity(new Intent(HomeActivity.this, ChangePWActivity.class));
+        }
+    };
+
+    Button.OnClickListener toastdevBtnClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+//            String input = "TRACKER DEV 푸시알림입니다.";
+//            테스트
         }
     };
 
@@ -183,12 +205,36 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         return valid;
     }
 
+    public void toastSend(String input) {
+        JSONObject requestData = new JSONObject();
+
+        try {
+            requestData.put("priority", "high");
+            JSONObject dataObj = new JSONObject();
+            dataObj.put("contents", input);
+            requestData.put("data", dataObj);
+
+            JSONArray idArray = new JSONArray();
+//            여기서부터
+        } catch (Exception e) {
+            e.printStackTrace();;
+        }
+    }
+
     @Override
     public void onClick(View view) {
         if (view == buttonLogout) {
-            firebaseAuth.signOut();
-            finish();
-            startActivity(new Intent(this, SignInActivity.class));
+            final String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+            FirebaseDatabase.getInstance().getReference().child("users").child(uid).child("token").setValue(null).addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    firebaseAuth.signOut();
+                    finish();
+                    Intent intent = new Intent(HomeActivity.this, SignInActivity.class);
+                    intent.putExtra("deviceToken", regToken);
+                    startActivityForResult(intent, REQUEST_CODE_MENU);
+                }
+            });
         }
         if (view == enterBtn)
         {
