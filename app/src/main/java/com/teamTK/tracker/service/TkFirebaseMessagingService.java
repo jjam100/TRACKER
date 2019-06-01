@@ -1,4 +1,4 @@
-package com.teamTK.tracker;
+package com.teamTK.tracker.service;
 
 import android.app.Notification;
 import android.app.NotificationChannel;
@@ -21,6 +21,8 @@ import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.InstanceIdResult;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
+import com.teamTK.tracker.MainActivity;
+import com.teamTK.tracker.R;
 
 public class TkFirebaseMessagingService extends FirebaseMessagingService {
     private static final String TAG = "TkMS";

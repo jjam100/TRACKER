@@ -28,12 +28,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.UploadTask;
-import com.teamTK.tracker.common.FCMPush;
+import com.teamTK.tracker.service.FCMPush;
 import com.teamTK.tracker.common.Util9;
 import com.teamTK.tracker.model.UserModel;
-
-import org.json.JSONArray;
-import org.json.JSONObject;
 
 public class HomeActivity extends AppCompatActivity implements View.OnClickListener {
     public static final int REQUEST_CODE_MENU = 104;
@@ -215,9 +212,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 public void onComplete(@NonNull Task<Void> task) {
                     firebaseAuth.signOut();
                     finish();
-                    Intent intent = new Intent(HomeActivity.this, SignInActivity.class);
-                    intent.putExtra("deviceToken", regToken);
-                    startActivityForResult(intent, REQUEST_CODE_MENU);
+                    startActivity(new Intent(getApplicationContext(), MainActivity.class));
                 }
             });
         }

@@ -11,9 +11,10 @@
         android:id="@+id/imageView1"
         android:layout_width="123dp"
         android:layout_height="123dp"
-        android:layout_centerInParent="true"
-        app:srcCompat="@drawable/main_image"
-        android:layout_marginBottom="279dp" />
+        android:layout_above="@+id/sign_in"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="56dp"
+        app:srcCompat="@drawable/main_image" />
 
     <TextView
         android:id="@+id/textView1"
@@ -33,8 +34,35 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
+        android:layout_marginBottom="200dp"
+        android:text="이메일로 로그인" />
+
+    <Button
+        android:id="@+id/btn_google_custom"
+        android:layout_width="289dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="150dp"
+        android:text="구글계정으로 로그인" />
+
+    <Button
+        android:id="@+id/btn_facebook_custom"
+        android:layout_width="289dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
         android:layout_marginBottom="100dp"
-        android:text="로그인하기" />
+        android:text="페이스북으로 로그인" />
+
+    <com.facebook.login.widget.LoginButton
+        android:id="@+id/btn_facebook_login"
+        android:layout_width="289dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="100dp"
+        android:visibility="gone"/>
 
     <Button
         android:id="@+id/sign_up"
