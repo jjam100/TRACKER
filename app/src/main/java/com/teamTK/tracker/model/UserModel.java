@@ -7,9 +7,15 @@ public class UserModel {
     private String token;
     private String userphoto;
 
+    public void setTrackers(Tracker[] trackers) { this.trackers = trackers; }
+
+    private Tracker[] trackers;
+
     public String getUserid() {
         return userid;
     }
+
+    public Tracker[] getTrackers() { return trackers; }
 
     public void setUserid(String userid) {
         this.userid = userid;
