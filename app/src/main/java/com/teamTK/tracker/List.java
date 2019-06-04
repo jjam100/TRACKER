@@ -23,7 +23,5 @@ public class List extends AppCompatActivity {
                 startActivityForResult(intent, sub);
             }
         });
-
-
     }
 }

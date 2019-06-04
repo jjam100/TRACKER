@@ -54,11 +54,11 @@ public class ResetPWActivity extends AppCompatActivity implements View.OnClickLi
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             if(task.isSuccessful()){
-                                Toast.makeText(ResetPWActivity.this, "이메일을 보냈습니다.", Toast.LENGTH_LONG).show();
+                                Toast.makeText(ResetPWActivity.this, "재설정되었습니다. 이메일을 확인해 주세요!", Toast.LENGTH_LONG).show();
                                 finish();
                                 startActivity(new Intent(getApplicationContext(), SignInActivity.class));
                             } else {
-                                Toast.makeText(ResetPWActivity.this, "메일 보내기 실패!", Toast.LENGTH_LONG).show();
+                                Toast.makeText(ResetPWActivity.this, "오류가 발생했습니다. 관리자에게 문의해주시기 바랍니다.", Toast.LENGTH_LONG).show();
                             }
                             progressDialog.dismiss();
                         }

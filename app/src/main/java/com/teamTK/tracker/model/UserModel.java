@@ -8,13 +8,9 @@ public class UserModel {
     private String userphoto;
     private Tracker[] trackers;
 
-    public void setTrackers(Tracker[] trackers) { this.trackers = trackers; }
-
     public String getUserid() {
         return userid;
     }
-
-    public Tracker[] getTrackers() { return trackers; }
 
     public void setUserid(String userid) {
         this.userid = userid;
@@ -52,7 +48,9 @@ public class UserModel {
         this.userphoto = userphoto;
     }
 
+    public Tracker[] getTrackers() { return trackers; }
 
+    public void setTrackers(Tracker[] trackers) {
+        this.trackers = trackers;
+    }
 }
-
-

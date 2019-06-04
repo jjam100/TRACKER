@@ -2,6 +2,7 @@ package com.teamTK.tracker;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
@@ -119,8 +120,7 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
                                 Toast.makeText(getApplicationContext(), "이메일 인증이 되지 않았습니다.\n이메일을 확인해 주세요!", Toast.LENGTH_LONG).show();
                             }
                         } else {
-                            Toast.makeText(getApplicationContext(), "로그인 실패!", Toast.LENGTH_LONG).show();
-                            textviewMessage.setText("로그인 실패 유형\n - password가 맞지 않습니다.\n -서버에러");
+                            Toast.makeText(getApplicationContext(), "계정이나 패스워드가 맞지 않습니다. 다시 확인해 주세요!", Toast.LENGTH_LONG).show();
                         }
                     }
                 });

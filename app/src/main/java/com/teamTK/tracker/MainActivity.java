@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -11,8 +12,10 @@ import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.crashlytics.android.Crashlytics;
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
@@ -34,20 +37,31 @@ import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.InstanceIdResult;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
+import com.teamTK.tracker.common.ObjectUtils;
+import com.teamTK.tracker.common.Util9;
 import com.teamTK.tracker.model.UserModel;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
+import java.io.File;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
@@ -66,7 +80,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Button buttonGoogleCustom;
     LoginButton buttonFacebookSignin;
     Button buttonFacebookCustom;
-    Button buttonSignup;
+    TextView buttonSignup;
+    //firebase auth object
+    private FirebaseAuth firebaseAuth;
 
     // FCM을 위한 단말의 등록 토큰
     String regToken;
@@ -98,12 +114,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buttonGoogleCustom = (Button)findViewById(R.id.btn_google_custom);
         buttonFacebookSignin = (LoginButton) findViewById(R.id.btn_facebook_login);
         buttonFacebookCustom = (Button) findViewById(R.id.btn_facebook_custom);
-        buttonSignup = (Button)findViewById(R.id.sign_up);
+        buttonSignup = (TextView) findViewById(R.id.sign_up);
 
         buttonSignin.setOnClickListener(this);
         buttonGoogleCustom.setOnClickListener(this);
         buttonSignup.setOnClickListener(this);
         buttonFacebookCustom.setOnClickListener(this);
+
+        //initializing firebase authentication object
+        firebaseAuth = FirebaseAuth.getInstance();
+        if(firebaseAuth.getCurrentUser() != null) {
+            //이미 로그인 되었다면 이 액티비티를 종료함
+            finish();
+            //그리고 Home 액티비티를 연다.
+            startActivity(new Intent(getApplicationContext(), HomeActivity.class)); //추가해 줄 ProfileActivity
+        }
 
         //로그인 시도할 액티비티에서 유저데이터 요청
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -214,19 +239,40 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             Toast.makeText(MainActivity.this, "구글 로그인 인증에 실패하였습니다.\n다시 시도해 주세요.", Toast.LENGTH_SHORT).show();;
                         } else {
                             final String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-                            UserModel userModel = new UserModel();
-                            userModel.setUid(uid);
-                            userModel.setUserid(acct.getEmail());
-                            userModel.setUsernm(acct.getDisplayName());
-                            userModel.setToken(regToken);
-                            FirebaseDatabase.getInstance().getReference().child("users").child(uid).setValue(userModel).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                  @Override
-                                  public void onComplete(@NonNull Task<Void> task) {
-                                      Toast.makeText(getApplicationContext(), "환영합니다!", Toast.LENGTH_LONG).show();
-                                      finish();
-                                      startActivity(new Intent(getApplicationContext(), HomeActivity.class));
-                                  }
-                              });
+                            FirebaseDatabase.getInstance().getReference().child("users").child(uid).addListenerForSingleValueEvent(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                    Log.d(TAG, "이 값은 ? : " + ObjectUtils.isEmpty(dataSnapshot.getValue(UserModel.class)));
+                                    if (ObjectUtils.isEmpty(dataSnapshot.getValue(UserModel.class))) {
+                                        UserModel userModel = new UserModel();
+                                        userModel.setUid(uid);
+                                        userModel.setUserid(acct.getEmail());
+                                        userModel.setUsernm(acct.getDisplayName());
+                                        userModel.setToken(regToken);
+                                        FirebaseDatabase.getInstance().getReference().child("users").child(uid).setValue(userModel).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<Void> task) {
+                                                Toast.makeText(getApplicationContext(), "환영합니다!", Toast.LENGTH_LONG).show();
+                                                finish();
+                                                startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+                                            }
+                                        });
+                                    } else {
+                                        FirebaseDatabase.getInstance().getReference().child("users").child(uid).child("token").setValue(regToken).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                            @Override
+                                            public void onSuccess(Void aVoid) {
+                                                Toast.makeText(getApplicationContext(), "환영합니다!", Toast.LENGTH_LONG).show();
+                                                finish();
+                                                startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+                                            }
+                                        });
+                                    }
+                                }
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                }
+                            });
                         }
                     }
                 });
@@ -242,32 +288,46 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         if (task.isSuccessful()) {
                             // 로그인 성공
                             final String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-                            UserModel userModel = new UserModel();
-                            userModel.setUid(uid);
-                            userModel.setUserid(facebookEmail);
-                            userModel.setUsernm(Profile.getCurrentProfile().getName());
-                            userModel.setToken(regToken);
-                            FirebaseDatabase.getInstance().getReference().child("users").child(uid).setValue(userModel).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            FirebaseDatabase.getInstance().getReference().child("users").child(uid).addListenerForSingleValueEvent(new ValueEventListener() {
                                 @Override
-                                public void onComplete(@NonNull Task<Void> task) {
-                                    Toast.makeText(getApplicationContext(), "환영합니다!", Toast.LENGTH_LONG).show();
-                                    finish();
-                                    startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+                                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                    Log.d(TAG, "이 값은 ? : " + ObjectUtils.isEmpty(dataSnapshot.getValue(UserModel.class)));
+                                    if (ObjectUtils.isEmpty(dataSnapshot.getValue(UserModel.class))) {
+                                        UserModel userModel = new UserModel();
+                                        userModel.setUid(uid);
+                                        userModel.setUserid(facebookEmail);
+                                        userModel.setUsernm(Profile.getCurrentProfile().getName());
+                                        userModel.setToken(regToken);
+                                        FirebaseDatabase.getInstance().getReference().child("users").child(uid).setValue(userModel).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<Void> task) {
+                                                Toast.makeText(getApplicationContext(), "환영합니다!", Toast.LENGTH_LONG).show();
+                                                finish();
+                                                startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+                                            }
+                                        });
+                                    } else {
+                                        FirebaseDatabase.getInstance().getReference().child("users").child(uid).child("token").setValue(regToken).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                            @Override
+                                            public void onSuccess(Void aVoid) {
+                                                Toast.makeText(getApplicationContext(), "환영합니다!", Toast.LENGTH_LONG).show();
+                                                finish();
+                                                startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+                                            }
+                                        });
+                                    }
+                                }
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError databaseError) {
+
                                 }
                             });
-                            Toast.makeText(MainActivity.this, "환영합니다!", Toast.LENGTH_SHORT).show();
                         } else {
                             // 로그인 실패
                             Toast.makeText(MainActivity.this, "페이스북 로그인에 실패하였습니다.\n다시 시도해 주세요.", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
-    }
-
-    // 이메일에서 @의 앞부분을 닉네임으로 설정
-    String extractIDFromEmail(String email) {
-        String[] parts = email.split("@");
-        return parts[0];
     }
 
     // 페이스북 로그인 이메일

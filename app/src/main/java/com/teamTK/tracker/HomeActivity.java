@@ -18,7 +18,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.firebase.ui.storage.images.FirebaseImageLoader;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -27,10 +29,11 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
-import com.teamTK.tracker.service.FCMPush;
 import com.teamTK.tracker.common.Util9;
 import com.teamTK.tracker.model.UserModel;
+import com.teamTK.tracker.service.FCMPush;
 
 public class HomeActivity extends AppCompatActivity implements View.OnClickListener {
     public static final int REQUEST_CODE_MENU = 104;
@@ -57,6 +60,9 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     // FCM을 위한 단말의 등록 토큰
     String regToken;
 
+    // FirebaseStorage 사용
+    FirebaseStorage storage = FirebaseStorage.getInstance();
+    StorageReference storageRef = storage.getReference();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,18 +71,18 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
         //initializing views
         //textViewUserEmail = (TextView) findViewById(R.id.textviewUserEmail);
-        buttonLogout = (Button) findViewById(R.id.button_logout);
+        buttonLogout = (Button) findViewById(R.id.buttonLogout);
         enterBtn = (Button) findViewById(R.id.enter_button);
-        textivewDelete = (TextView) findViewById(R.id.textview_delete);
+        textivewDelete = (TextView) findViewById(R.id.textviewDelete);
         user_id = (EditText) findViewById(R.id.user_id);
         user_id.setEnabled(false);
         user_name = (EditText) findViewById(R.id.user_name);
         user_photo = (ImageView) findViewById(R.id.user_photo);
         user_photo.setOnClickListener(userPhotoIVClickListener);
 
-        saveBtn = (Button) findViewById(R.id.save_btn);
+        saveBtn = (Button) findViewById(R.id.saveBtn);
         saveBtn.setOnClickListener(saveBtnClickListener);
-        changePWBtn = (Button) findViewById(R.id.changepw_btn);
+        changePWBtn = (Button) findViewById(R.id.changePWBtn);
         changePWBtn.setOnClickListener(changePWBtnClickListener);
         pushdevBtn = (Button) findViewById(R.id.push_dev);
         pushdevBtn.setOnClickListener(toastdevBtnClickListener);
@@ -93,6 +99,9 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         //유저가 있다면, null이 아니면 계속 진행
         FirebaseUser user = firebaseAuth.getCurrentUser();
         getUserInfoFromServer();
+
+        Log.d(TAG, "이건 뭐지? " + user.getProviderData());
+        Log.d(TAG, "이건 뭐지? " + user.getProviderId());
 
         //logout button event
         buttonLogout.setOnClickListener(this);
@@ -112,9 +121,14 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 regToken = userModel.getToken();
                 Log.d(TAG, "사용자 user_id : " + userModel.getUserid());
                 Log.d(TAG, "사용자 user_name : " + userModel.getUsernm());
+                Log.d(TAG, "유저포토 : " + userModel.getUserphoto());
                 if (userModel.getUserphoto()!= null && !"".equals(userModel.getUserphoto())) {
+                    Log.d(TAG, "여기까진 오니???");
+                    StorageReference storageRef = storage.getReference();
+                    StorageReference spaceRef = storageRef.child("userPhoto/"+userModel.getUserphoto());
                     Glide.with(HomeActivity.this)
-                            .load(FirebaseStorage.getInstance().getReference("userPhoto/"+userModel.getUserphoto()))
+                            .using(new FirebaseImageLoader())
+                            .load(spaceRef)
                             .into(user_photo);
                 }
             }
@@ -151,20 +165,23 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 FirebaseDatabase.getInstance().getReference().child("users").child(uid).setValue(userModel).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
-                        Util9.showMessage(HomeActivity.this, "Success to Save.");
+                        Toast.makeText(HomeActivity.this, "저장되었습니다!", Toast.LENGTH_SHORT).show();
                     }
                 });
             } else {
-                FirebaseStorage.getInstance().getReference().child("userPhoto").child(uid).putFile(userPhotoUri).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
+                StorageReference spaceRef = storageRef.child("userPhoto/" + uid);
+                spaceRef.putFile(userPhotoUri).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
-                        userModel.setUserphoto( uid );
-                        FirebaseDatabase.getInstance().getReference().child("users").child(uid).setValue(userModel).addOnCompleteListener(new OnCompleteListener<Void>() {
-                            @Override
-                            public void onComplete(@NonNull Task<Void> task) {
-                                Util9.showMessage(HomeActivity.this, "Success to Save.");
-                            }
-                        });
+                        Log.d(TAG, "여기까지 오지도 않니????????");
+                    }
+                });
+                userModel.setUserphoto(uid);
+                FirebaseDatabase.getInstance().getReference().child("users").child(uid).setValue(userModel).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        Log.d(TAG, "여긴 오지도 않니????????");
+                        Toast.makeText(HomeActivity.this, "저장되었습니다!", Toast.LENGTH_SHORT).show();
                     }
                 });
             }
@@ -227,14 +244,36 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
             alert_confirm.setMessage("정말 계정을 삭제 할까요?").setCancelable(false).setPositiveButton("확인", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
+                            final String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
                             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                             user.delete()
                                     .addOnCompleteListener(new OnCompleteListener<Void>() {
                                         @Override
                                         public void onComplete(@NonNull Task<Void> task) {
-                                            Toast.makeText(HomeActivity.this, "계정이 삭제 되었습니다.", Toast.LENGTH_LONG).show();
-                                            finish();
-                                            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                                            Log.d(TAG, "사용자 계정 삭제");
+                                            FirebaseDatabase.getInstance().getReference().child("users").child(uid).setValue(null).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                @Override
+                                                public void onComplete(@NonNull Task<Void> task) {
+                                                    Log.d(TAG, "사용자 데이터 삭제");
+                                                    if(userModel.getUserphoto() != null) {
+                                                        StorageReference storageRef = storage.getReference();
+                                                        StorageReference spaceRef = storageRef.child("userPhoto/"+userModel.getUserphoto());
+                                                        spaceRef.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                            @Override
+                                                            public void onSuccess(Void aVoid) {
+                                                                Log.d(TAG, "사용자 유저포토 삭제");
+                                                                Toast.makeText(HomeActivity.this, "계정이 삭제 되었습니다.", Toast.LENGTH_LONG).show();
+                                                                finish();
+                                                                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                                                            }
+                                                        });
+                                                    } else {
+                                                        Toast.makeText(HomeActivity.this, "계정이 삭제 되었습니다.", Toast.LENGTH_LONG).show();
+                                                        finish();
+                                                        startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                                                    }
+                                                }
+                                            });
                                         }
                                     });
                         }

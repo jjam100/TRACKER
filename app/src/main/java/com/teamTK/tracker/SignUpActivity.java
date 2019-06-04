@@ -32,7 +32,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
     EditText editTextEmail;
     EditText editTextPassword;
     Button buttonSignup;
-    TextView textviewSingin;
+    TextView textviewSignin;
     TextView textviewMessage;
     ProgressDialog progressDialog;
     SharedPreferences sharedPreferences;
@@ -62,14 +62,14 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         //initializing views
         editTextEmail = (EditText) findViewById(R.id.editTextEmail);
         editTextPassword = (EditText) findViewById(R.id.editTextPassword);
-        textviewSingin= (TextView) findViewById(R.id.textViewSignin);
+        textviewSignin= (TextView) findViewById(R.id.textViewSignin);
         textviewMessage = (TextView) findViewById(R.id.textviewMessage);
         buttonSignup = (Button) findViewById(R.id.buttonSignup);
         progressDialog = new ProgressDialog(this);
 
         //button click event
         buttonSignup.setOnClickListener(this);
-        textviewSingin.setOnClickListener(this);
+        textviewSignin.setOnClickListener(this);
     }
 
     private void processIntent (Intent intent) {
@@ -84,14 +84,19 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
     private void registerUser() {
         // 사용자가 입력하는 email, password를 가져온다.
         final String email = editTextEmail.getText().toString().trim();
-        String password = editTextPassword.getText().toString().trim();
+        final String password = editTextPassword.getText().toString().trim();
         // email과 password가 비었는지 아닌지를 체크 한다.
         if(TextUtils.isEmpty(email)){
             Toast.makeText(this, "Email을 입력해 주세요.", Toast.LENGTH_SHORT).show();
             return;
         }
-        if(TextUtils.isEmpty(password)){
+        else if(TextUtils.isEmpty(password)){
             Toast.makeText(this, "Password를 입력해 주세요.", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        else if(password.length()<8) {
+            Toast.makeText(this, "비밀번호는 최소 8자리 이상이여야 합니다.", Toast.LENGTH_SHORT).show();
+            return;
         }
 
         // email과 password가 제대로 입력되어 있다면 계속 진행된다.
@@ -137,9 +142,8 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
                             });
                         } else {
                             //에러발생시
-                            textviewMessage.setText("에러유형\n - 이미 등록된 이메일  \n -암호 최소 6자리 이상 \n - 서버에러");
+                            textviewMessage.setText("이미 등록된 이메일입니다.\n비밀번호 찾기를 이용해 주세요.");
                             //Snackbar.make(getWindow().getDecorView().getRootView(), "등록 에러!", Snackbar.LENGTH_LONG).show();
-                            Toast.makeText(SignUpActivity.this, "등록 에러!", Toast.LENGTH_SHORT).show();
                         }
                         progressDialog.dismiss();
                     }
@@ -161,9 +165,11 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
             registerUser();
         }
 
-        if(view == textviewSingin) {
+        if(view == textviewSignin) {
             //TODO
-            startActivity(new Intent(this, SignInActivity.class)); //추가해 줄 로그인 액티비티
+            Intent intent = new Intent(this, SignInActivity.class);
+            intent.putExtra("deviceToken", regToken);
+            startActivityForResult(intent, REQUEST_CODE_MENU);
         }
     }
 }

@@ -4,21 +4,15 @@ import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
-import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Build;
-import android.os.IBinder;
-import android.os.PowerManager;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.iid.FirebaseInstanceId;
-import com.google.firebase.iid.InstanceIdResult;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 import com.teamTK.tracker.MainActivity;
@@ -26,6 +20,7 @@ import com.teamTK.tracker.R;
 
 public class TkFirebaseMessagingService extends FirebaseMessagingService {
     private static final String TAG = "TkMS";
+    private static final int IconColor = 0x578db1;
 
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
@@ -102,11 +97,11 @@ public class TkFirebaseMessagingService extends FirebaseMessagingService {
         builder.setAutoCancel(true);
         builder.setDefaults(Notification.DEFAULT_ALL);
         builder.setWhen(System.currentTimeMillis());
-        // 나중에 우리 아이콘 크기별로 조정해서 집어넣어야...
-        builder.setSmallIcon(R.mipmap.ic_launcher);
         builder.setContentText(content);
         builder.setContentIntent(pendingIntent);
         builder.setContentTitle(title);
+        builder.setSmallIcon(getNotificationIcon());
+        builder.setColor(IconColor);
         if(Build.VERSION.SDK_INT < Build.VERSION_CODES.O) {
             // 아래 설정은 오레오부터 deprecated 되면서 NotificationChannel에서 동일기능을 하는 메소드를 사용
             builder.setSound(defaultSoundUri);
@@ -115,6 +110,11 @@ public class TkFirebaseMessagingService extends FirebaseMessagingService {
         }
 
         mManager.notify(0, builder.build());
+    }
+
+    private int getNotificationIcon() {
+        boolean useWhiteIcon = (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP);
+        return useWhiteIcon ? R.drawable.ic_stat_name : R.drawable.ic_stat_name;
     }
 
     @Override

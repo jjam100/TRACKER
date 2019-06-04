@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -27,7 +28,7 @@ public class ChangePWActivity extends AppCompatActivity {
 
         user_pw1 = findViewById(R.id.user_pw1);
         user_pw2 = findViewById(R.id.user_pw2);
-        saveBtn = findViewById(R.id.save_btn);
+        saveBtn = findViewById(R.id.saveBtn);
         saveBtn.setOnClickListener(saveBtnClickListener);
     }
 
@@ -36,11 +37,11 @@ public class ChangePWActivity extends AppCompatActivity {
         public void onClick(final View view) {
             String pw1 = user_pw1.getText().toString().trim();
             if (pw1.length()<8) {
-                Util9.showMessage(getApplicationContext(), "Please enter at least eight characters.");
+                Toast.makeText(getApplicationContext(), "비밀번호는 최소 8자리 이상이여야 합니다.", Toast.LENGTH_SHORT).show();
                 return;
             }
             if (!pw1.equals(user_pw2.getText().toString().trim())) {
-                Util9.showMessage(getApplicationContext(), "Password does not match the confirm password.");
+                Toast.makeText(getApplicationContext(), "패스워드가 일치하지 않습니다.\n다시 확인해 주세요!", Toast.LENGTH_SHORT).show();
                 return;
             }
 
