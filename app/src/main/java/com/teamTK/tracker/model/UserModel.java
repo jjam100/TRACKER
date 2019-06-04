@@ -6,10 +6,9 @@ public class UserModel {
     private String usernm;
     private String token;
     private String userphoto;
+    private Tracker[] trackers;
 
     public void setTrackers(Tracker[] trackers) { this.trackers = trackers; }
-
-    private Tracker[] trackers;
 
     public String getUserid() {
         return userid;
