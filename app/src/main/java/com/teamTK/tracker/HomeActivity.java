@@ -65,18 +65,18 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
         //initializing views
         //textViewUserEmail = (TextView) findViewById(R.id.textviewUserEmail);
-        buttonLogout = (Button) findViewById(R.id.buttonLogout);
+        buttonLogout = (Button) findViewById(R.id.button_logout);
         enterBtn = (Button) findViewById(R.id.enter_button);
-        textivewDelete = (TextView) findViewById(R.id.textviewDelete);
+        textivewDelete = (TextView) findViewById(R.id.textview_delete);
         user_id = (EditText) findViewById(R.id.user_id);
         user_id.setEnabled(false);
         user_name = (EditText) findViewById(R.id.user_name);
         user_photo = (ImageView) findViewById(R.id.user_photo);
         user_photo.setOnClickListener(userPhotoIVClickListener);
 
-        saveBtn = (Button) findViewById(R.id.saveBtn);
+        saveBtn = (Button) findViewById(R.id.save_btn);
         saveBtn.setOnClickListener(saveBtnClickListener);
-        changePWBtn = (Button) findViewById(R.id.changePWBtn);
+        changePWBtn = (Button) findViewById(R.id.changepw_btn);
         changePWBtn.setOnClickListener(changePWBtnClickListener);
         pushdevBtn = (Button) findViewById(R.id.push_dev);
         pushdevBtn.setOnClickListener(toastdevBtnClickListener);

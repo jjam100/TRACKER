@@ -27,7 +27,7 @@ public class ChangePWActivity extends AppCompatActivity {
 
         user_pw1 = findViewById(R.id.user_pw1);
         user_pw2 = findViewById(R.id.user_pw2);
-        saveBtn = findViewById(R.id.saveBtn);
+        saveBtn = findViewById(R.id.save_btn);
         saveBtn.setOnClickListener(saveBtnClickListener);
     }
 

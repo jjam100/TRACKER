@@ -19,9 +19,11 @@ public class List extends AppCompatActivity {
         tracker_button1.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                Intent intent = new Intent(getApplicationContext(), Mood.class);
+                Intent intent = new Intent(getApplicationContext(), TrackerActivity.class);
                 startActivityForResult(intent, sub);
             }
         });
+
+
     }
 }

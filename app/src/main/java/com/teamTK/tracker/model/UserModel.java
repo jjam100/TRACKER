@@ -46,4 +46,8 @@ public class UserModel {
     public void setUserphoto(String userphoto) {
         this.userphoto = userphoto;
     }
+
+
 }
+
+

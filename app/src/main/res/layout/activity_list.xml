@@ -8,7 +8,7 @@
     tools:context=".List">
 
     <TextView
-        android:id="@+id/List_head"
+        android:id="@+id/list_head"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
@@ -22,8 +22,27 @@
         android:id="@+id/tracker_button1"
         android:layout_width="249dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/List_head"
+        android:layout_below="@+id/list_head"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp"
         android:text="감정" />
+
+    <Button
+        android:id="@+id/list_back_button"
+        android:layout_width="249dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="49dp"
+        android:text="뒤로가기" />
+
+    <Button
+        android:id="@+id/list_add_button"
+        android:layout_width="249dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/list_back_button"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+        android:text="트래커 추가하기" />
+
 </RelativeLayout>

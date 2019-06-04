@@ -8,7 +8,7 @@
     >
 
     <ImageButton
-        android:id="@+id/imageView1"
+        android:id="@+id/logo"
         android:layout_width="123dp"
         android:layout_height="123dp"
         android:layout_above="@+id/sign_in"
@@ -17,10 +17,10 @@
         app:srcCompat="@drawable/main_image" />
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/imageView1"
+        android:layout_above="@+id/logo"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="5dp"
         android:text="TRACKER"

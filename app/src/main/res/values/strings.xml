@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Tracker</string>
-    <string name="facebook_app_id"></string>
-    <string name="fb_login_protocol_scheme"></string>
+    <string name="facebook_app_id">506369119902470</string>
+    <string name="fb_login_protocol_scheme">fb506369119902470</string>
 
     <!--<string name="default_notification_channel_id"></string>-->
 </resources>

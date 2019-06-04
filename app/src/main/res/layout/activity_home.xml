@@ -41,13 +41,13 @@
                 android:layout_height="wrap_content" />
         </android.support.design.widget.TextInputLayout>
         <Button
-            android:id="@+id/saveBtn"
+            android:id="@+id/save_btn"
             android:text="정보변경저장"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
         <Button
-            android:id="@+id/changePWBtn"
+            android:id="@+id/changepw_btn"
             android:text="패스워드변경"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
@@ -64,7 +64,7 @@
             android:layout_height="wrap_content" />
 
         <Button
-            android:id="@+id/buttonLogout"
+            android:id="@+id/button_logout"
             android:text="로그아웃"
             android:layout_gravity="center_horizontal"
             android:layout_width="match_parent"
@@ -72,7 +72,7 @@
 
         <TextView
             android:text="회원탈퇴 합니다."
-            android:id="@+id/textviewDelete"
+            android:id="@+id/textview_delete"
             android:layout_gravity="center_horizontal"
             android:textColor="@color/colorAccent"
             android:layout_margin="16dp"

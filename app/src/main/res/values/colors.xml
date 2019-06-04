@@ -3,4 +3,409 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+
+    <!--TRACKER COLORS 200개-->
+    <color name="tracker_color0">#f9ebea</color>
+    <color name="tracker_color1">#f2d7d5</color>
+    <color name="tracker_color2">#E6B0AA</color>
+    <color name="tracker_color3">#d98880</color>
+    <color name="tracker_color4">#cd6155</color>
+    <color name="tracker_color5">#c0392b</color>
+    <color name="tracker_color6">#a93226</color>
+    <color name="tracker_color7">#922b21</color>
+    <color name="tracker_color8">#7b241c</color>
+    <color name="tracker_color9">#641e16</color>
+    <color name="tracker_color10">#fdedec</color>
+    <color name="tracker_color11">#fadbd8</color>
+    <color name="tracker_color12">#f5b7b1</color>
+    <color name="tracker_color13">#f1948a</color>
+    <color name="tracker_color14">#ec7063</color>
+    <color name="tracker_color15">#e74c3c</color>
+    <color name="tracker_color16">#cb4335</color>
+    <color name="tracker_color17">#b03a2e</color>
+    <color name="tracker_color18">#943126</color>
+    <color name="tracker_color19">#78281f</color>
+    <color name="tracker_color20">#f5eef8</color>
+    <color name="tracker_color21">#ebdef0</color>
+    <color name="tracker_color22">#d7bde2</color>
+    <color name="tracker_color23">#c39bd3</color>
+    <color name="tracker_color24">#AF7AC5</color>
+    <color name="tracker_color25">#9b59b6</color>
+    <color name="tracker_color26">#884ea0</color>
+    <color name="tracker_color27">#76448a</color>
+    <color name="tracker_color28">#633974</color>
+    <color name="tracker_color29">#512e5f</color>
+    <color name="tracker_color30">#f4ecf7</color>
+    <color name="tracker_color31">#e8daef</color>
+    <color name="tracker_color32">#d2b4de</color>
+    <color name="tracker_color33">#bb8fce</color>
+    <color name="tracker_color34">#a569bd</color>
+    <color name="tracker_color35">#8e44ad</color>
+    <color name="tracker_color36">#7d3c98</color>
+    <color name="tracker_color37">#6c3483</color>
+    <color name="tracker_color38">#5b2c6f</color>
+    <color name="tracker_color39">#4a235a</color>
+    <color name="tracker_color40">#eaf2f8</color>
+    <color name="tracker_color41">#d4e6f1</color>
+    <color name="tracker_color42">#a9cce3</color>
+    <color name="tracker_color43">#7fb3d5</color>
+    <color name="tracker_color44">#5499c7</color>
+    <color name="tracker_color45">#2980b9</color>
+    <color name="tracker_color46">#2471a3</color>
+    <color name="tracker_color47">#1f618d</color>
+    <color name="tracker_color48">#1a5276</color>
+    <color name="tracker_color49">#154360</color>
+    <color name="tracker_color50">#ebf5fb</color>
+    <color name="tracker_color51">#d6eaf8</color>
+    <color name="tracker_color52">#aed6f1</color>
+    <color name="tracker_color53">#85c1e9</color>
+    <color name="tracker_color54">#5dade2</color>
+    <color name="tracker_color55">#3498db</color>
+    <color name="tracker_color56">#2e86c1</color>
+    <color name="tracker_color57">#2874a6</color>
+    <color name="tracker_color58">#21618c</color>
+    <color name="tracker_color59">#1b4f72</color>
+    <color name="tracker_color60">#e8f8f5</color>
+    <color name="tracker_color61">#d1f2eb</color>
+    <color name="tracker_color62">#a3e4d7</color>
+    <color name="tracker_color63">#76d7c4</color>
+    <color name="tracker_color64">#48c9b0</color>
+    <color name="tracker_color65">#1abc9c</color>
+    <color name="tracker_color66">#17a589</color>
+    <color name="tracker_color67">#148f77</color>
+    <color name="tracker_color68">#117864</color>
+    <color name="tracker_color69">#0e6251</color>
+    <color name="tracker_color70">#e8f6f3</color>
+    <color name="tracker_color71">#d0ece7</color>
+    <color name="tracker_color72">#a2d9ce</color>
+    <color name="tracker_color73">#73c6b6</color>
+    <color name="tracker_color74">#45b39d</color>
+    <color name="tracker_color75">#16a085</color>
+    <color name="tracker_color76">#138d75</color>
+    <color name="tracker_color77">#117a65</color>
+    <color name="tracker_color78">#0e6655</color>
+    <color name="tracker_color79">#0b5345</color>
+    <color name="tracker_color80">#e9f7ef</color>
+    <color name="tracker_color81">#d4efdf</color>
+    <color name="tracker_color82">#a9dfbf</color>
+    <color name="tracker_color83">#7dcea0</color>
+    <color name="tracker_color84">#52be80</color>
+    <color name="tracker_color85">#27ae60</color>
+    <color name="tracker_color86">#229954</color>
+    <color name="tracker_color87">#1e8449</color>
+    <color name="tracker_color88">#196f3d</color>
+    <color name="tracker_color89">#145a32</color>
+    <color name="tracker_color90">#eafaf1</color>
+    <color name="tracker_color91">#d5f5e3</color>
+    <color name="tracker_color92">#abebc6</color>
+    <color name="tracker_color93">#82e0aa</color>
+    <color name="tracker_color94">#58d68d</color>
+    <color name="tracker_color95">#2ecc71</color>
+    <color name="tracker_color96">#28b463</color>
+    <color name="tracker_color97">#239b56</color>
+    <color name="tracker_color98">#1d8348</color>
+    <color name="tracker_color99">#186a3b</color>
+    <color name="tracker_color100">#fef9e7</color>
+    <color name="tracker_color101">#fcf3cf</color>
+    <color name="tracker_color102">#f9e79f</color>
+    <color name="tracker_color103">#f7dc6f</color>
+    <color name="tracker_color104">#f4d03f</color>
+    <color name="tracker_color105">#f1c40f</color>
+    <color name="tracker_color106">#d4ac0d</color>
+    <color name="tracker_color107">#b7950b</color>
+    <color name="tracker_color108">#9a7d0a</color>
+    <color name="tracker_color109">#7d6608</color>
+    <color name="tracker_color110">#fef5e7</color>
+    <color name="tracker_color111">#fdebd0</color>
+    <color name="tracker_color112">#fad7a0</color>
+    <color name="tracker_color113">#f8c471</color>
+    <color name="tracker_color114">#f5b041</color>
+    <color name="tracker_color115">#f39c12</color>
+    <color name="tracker_color116">#d68910</color>
+    <color name="tracker_color117">#b9770e</color>
+    <color name="tracker_color118">#9c640c</color>
+    <color name="tracker_color119">#7e5109</color>
+    <color name="tracker_color120">#fdf2e9</color>
+    <color name="tracker_color121">#fae5d3</color>
+    <color name="tracker_color122">#f5cba7</color>
+    <color name="tracker_color123">#f0b27a</color>
+    <color name="tracker_color124">#eb984e</color>
+    <color name="tracker_color125">#e67e22</color>
+    <color name="tracker_color126">#ca6f1e</color>
+    <color name="tracker_color127">#af601a</color>
+    <color name="tracker_color128">#935116</color>
+    <color name="tracker_color129">#784212</color>
+    <color name="tracker_color130">#fbeee6</color>
+    <color name="tracker_color131">#f6ddcc</color>
+    <color name="tracker_color132">#edbb99</color>
+    <color name="tracker_color133">#e59866</color>
+    <color name="tracker_color134">#dc7633</color>
+    <color name="tracker_color135">#d35400</color>
+    <color name="tracker_color136">#ba4a00</color>
+    <color name="tracker_color137">#a04000</color>
+    <color name="tracker_color138">#873600</color>
+    <color name="tracker_color139">#6e2c00</color>
+    <color name="tracker_color140">#fdfefe</color>
+    <color name="tracker_color141">#fbfcfc</color>
+    <color name="tracker_color142">#f7f9f9</color>
+    <color name="tracker_color143">#f4f6f7</color>
+    <color name="tracker_color144">#f0f3f4</color>
+    <color name="tracker_color145">#ecf0f1</color>
+    <color name="tracker_color146">#d0d3d4</color>
+    <color name="tracker_color147">#b3b6b7</color>
+    <color name="tracker_color148">#979a9a</color>
+    <color name="tracker_color149">#7b7d7d</color>
+    <color name="tracker_color150">#f8f9f9</color>
+    <color name="tracker_color151">#f2f3f4</color>
+    <color name="tracker_color152">#e5e7e9</color>
+    <color name="tracker_color153">#d7dbdd</color>
+    <color name="tracker_color154">#cacfd2</color>
+    <color name="tracker_color155">#bdc3c7</color>
+    <color name="tracker_color156">#a6acaf</color>
+    <color name="tracker_color157">#909497</color>
+    <color name="tracker_color158">#797d7f</color>
+    <color name="tracker_color159">#626567</color>
+    <color name="tracker_color160">#f4f6f6</color>
+    <color name="tracker_color161">#eaeded</color>
+    <color name="tracker_color162">#d5dbdb</color>
+    <color name="tracker_color163">#bfc9ca</color>
+    <color name="tracker_color164">#aab7b8</color>
+    <color name="tracker_color165">#95a5a6</color>
+    <color name="tracker_color166">#839192</color>
+    <color name="tracker_color167">#717d7e</color>
+    <color name="tracker_color168">#5f6a6a</color>
+    <color name="tracker_color169">#4d5656</color>
+    <color name="tracker_color170">#f2f4f4</color>
+    <color name="tracker_color171">#e5e8e8</color>
+    <color name="tracker_color172">#ccd1d1</color>
+    <color name="tracker_color173">#b2babb</color>
+    <color name="tracker_color174">#99a3a4</color>
+    <color name="tracker_color175">#7f8c8d</color>
+    <color name="tracker_color176">#707b7c</color>
+    <color name="tracker_color177">#616a6b</color>
+    <color name="tracker_color178">#515a5a</color>
+    <color name="tracker_color179">#424949</color>
+    <color name="tracker_color180">#ebedef</color>
+    <color name="tracker_color181">#d6dbdf</color>
+    <color name="tracker_color182">#aeb6bf</color>
+    <color name="tracker_color183">#85929e</color>
+    <color name="tracker_color184">#5d6d7e</color>
+    <color name="tracker_color185">#34495e</color>
+    <color name="tracker_color186">#2e4053</color>
+    <color name="tracker_color187">#283747</color>
+    <color name="tracker_color188">#212f3c</color>
+    <color name="tracker_color189">#1b2631</color>
+    <color name="tracker_color190">#eaecee</color>
+    <color name="tracker_color191">#d5d8dc</color>
+    <color name="tracker_color192">#abb2b9</color>
+    <color name="tracker_color193">#808b96</color>
+    <color name="tracker_color194">#566573</color>
+    <color name="tracker_color195">#2c3e50</color>
+    <color name="tracker_color196">#273746</color>
+    <color name="tracker_color197">#212f3d</color>
+    <color name="tracker_color198">#1c2833</color>
+    <color name="tracker_color199">#17202a</color>
+
+    <array name="tracker_colors">
+        <item>@color/tracker_color0</item>
+        <item>@color/tracker_color1</item>
+        <item>@color/tracker_color2</item>
+        <item>@color/tracker_color3</item>
+        <item>@color/tracker_color4</item>
+        <item>@color/tracker_color5</item>
+        <item>@color/tracker_color6</item>
+        <item>@color/tracker_color7</item>
+        <item>@color/tracker_color8</item>
+        <item>@color/tracker_color9</item>
+        <item>@color/tracker_color10</item>
+        <item>@color/tracker_color11</item>
+        <item>@color/tracker_color12</item>
+        <item>@color/tracker_color13</item>
+        <item>@color/tracker_color14</item>
+        <item>@color/tracker_color15</item>
+        <item>@color/tracker_color16</item>
+        <item>@color/tracker_color17</item>
+        <item>@color/tracker_color18</item>
+        <item>@color/tracker_color19</item>
+        <item>@color/tracker_color20</item>
+        <item>@color/tracker_color21</item>
+        <item>@color/tracker_color22</item>
+        <item>@color/tracker_color23</item>
+        <item>@color/tracker_color24</item>
+        <item>@color/tracker_color25</item>
+        <item>@color/tracker_color26</item>
+        <item>@color/tracker_color27</item>
+        <item>@color/tracker_color28</item>
+        <item>@color/tracker_color29</item>
+        <item>@color/tracker_color30</item>
+        <item>@color/tracker_color31</item>
+        <item>@color/tracker_color32</item>
+        <item>@color/tracker_color33</item>
+        <item>@color/tracker_color34</item>
+        <item>@color/tracker_color35</item>
+        <item>@color/tracker_color36</item>
+        <item>@color/tracker_color37</item>
+        <item>@color/tracker_color38</item>
+        <item>@color/tracker_color39</item>
+        <item>@color/tracker_color40</item>
+        <item>@color/tracker_color41</item>
+        <item>@color/tracker_color42</item>
+        <item>@color/tracker_color43</item>
+        <item>@color/tracker_color44</item>
+        <item>@color/tracker_color45</item>
+        <item>@color/tracker_color46</item>
+        <item>@color/tracker_color47</item>
+        <item>@color/tracker_color48</item>
+        <item>@color/tracker_color49</item>
+        <item>@color/tracker_color50</item>
+        <item>@color/tracker_color51</item>
+        <item>@color/tracker_color52</item>
+        <item>@color/tracker_color53</item>
+        <item>@color/tracker_color54</item>
+        <item>@color/tracker_color55</item>
+        <item>@color/tracker_color56</item>
+        <item>@color/tracker_color57</item>
+        <item>@color/tracker_color58</item>
+        <item>@color/tracker_color59</item>
+        <item>@color/tracker_color60</item>
+        <item>@color/tracker_color61</item>
+        <item>@color/tracker_color62</item>
+        <item>@color/tracker_color63</item>
+        <item>@color/tracker_color64</item>
+        <item>@color/tracker_color65</item>
+        <item>@color/tracker_color66</item>
+        <item>@color/tracker_color67</item>
+        <item>@color/tracker_color68</item>
+        <item>@color/tracker_color69</item>
+        <item>@color/tracker_color70</item>
+        <item>@color/tracker_color71</item>
+        <item>@color/tracker_color72</item>
+        <item>@color/tracker_color73</item>
+        <item>@color/tracker_color74</item>
+        <item>@color/tracker_color75</item>
+        <item>@color/tracker_color76</item>
+        <item>@color/tracker_color77</item>
+        <item>@color/tracker_color78</item>
+        <item>@color/tracker_color79</item>
+        <item>@color/tracker_color80</item>
+        <item>@color/tracker_color81</item>
+        <item>@color/tracker_color82</item>
+        <item>@color/tracker_color83</item>
+        <item>@color/tracker_color84</item>
+        <item>@color/tracker_color85</item>
+        <item>@color/tracker_color86</item>
+        <item>@color/tracker_color87</item>
+        <item>@color/tracker_color88</item>
+        <item>@color/tracker_color89</item>
+        <item>@color/tracker_color90</item>
+        <item>@color/tracker_color91</item>
+        <item>@color/tracker_color92</item>
+        <item>@color/tracker_color93</item>
+        <item>@color/tracker_color94</item>
+        <item>@color/tracker_color95</item>
+        <item>@color/tracker_color96</item>
+        <item>@color/tracker_color97</item>
+        <item>@color/tracker_color98</item>
+        <item>@color/tracker_color99</item>
+        <item>@color/tracker_color100</item>
+        <item>@color/tracker_color101</item>
+        <item>@color/tracker_color102</item>
+        <item>@color/tracker_color103</item>
+        <item>@color/tracker_color104</item>
+        <item>@color/tracker_color105</item>
+        <item>@color/tracker_color106</item>
+        <item>@color/tracker_color107</item>
+        <item>@color/tracker_color108</item>
+        <item>@color/tracker_color109</item>
+        <item>@color/tracker_color110</item>
+        <item>@color/tracker_color111</item>
+        <item>@color/tracker_color112</item>
+        <item>@color/tracker_color113</item>
+        <item>@color/tracker_color114</item>
+        <item>@color/tracker_color115</item>
+        <item>@color/tracker_color116</item>
+        <item>@color/tracker_color117</item>
+        <item>@color/tracker_color118</item>
+        <item>@color/tracker_color119</item>
+        <item>@color/tracker_color120</item>
+        <item>@color/tracker_color121</item>
+        <item>@color/tracker_color122</item>
+        <item>@color/tracker_color123</item>
+        <item>@color/tracker_color124</item>
+        <item>@color/tracker_color125</item>
+        <item>@color/tracker_color126</item>
+        <item>@color/tracker_color127</item>
+        <item>@color/tracker_color128</item>
+        <item>@color/tracker_color129</item>
+        <item>@color/tracker_color130</item>
+        <item>@color/tracker_color131</item>
+        <item>@color/tracker_color132</item>
+        <item>@color/tracker_color133</item>
+        <item>@color/tracker_color134</item>
+        <item>@color/tracker_color135</item>
+        <item>@color/tracker_color136</item>
+        <item>@color/tracker_color137</item>
+        <item>@color/tracker_color138</item>
+        <item>@color/tracker_color139</item>
+        <item>@color/tracker_color140</item>
+        <item>@color/tracker_color141</item>
+        <item>@color/tracker_color142</item>
+        <item>@color/tracker_color143</item>
+        <item>@color/tracker_color144</item>
+        <item>@color/tracker_color145</item>
+        <item>@color/tracker_color146</item>
+        <item>@color/tracker_color147</item>
+        <item>@color/tracker_color148</item>
+        <item>@color/tracker_color149</item>
+        <item>@color/tracker_color150</item>
+        <item>@color/tracker_color151</item>
+        <item>@color/tracker_color152</item>
+        <item>@color/tracker_color153</item>
+        <item>@color/tracker_color154</item>
+        <item>@color/tracker_color155</item>
+        <item>@color/tracker_color156</item>
+        <item>@color/tracker_color157</item>
+        <item>@color/tracker_color158</item>
+        <item>@color/tracker_color159</item>
+        <item>@color/tracker_color160</item>
+        <item>@color/tracker_color161</item>
+        <item>@color/tracker_color162</item>
+        <item>@color/tracker_color163</item>
+        <item>@color/tracker_color164</item>
+        <item>@color/tracker_color165</item>
+        <item>@color/tracker_color166</item>
+        <item>@color/tracker_color167</item>
+        <item>@color/tracker_color168</item>
+        <item>@color/tracker_color169</item>
+        <item>@color/tracker_color170</item>
+        <item>@color/tracker_color171</item>
+        <item>@color/tracker_color172</item>
+        <item>@color/tracker_color173</item>
+        <item>@color/tracker_color174</item>
+        <item>@color/tracker_color175</item>
+        <item>@color/tracker_color176</item>
+        <item>@color/tracker_color177</item>
+        <item>@color/tracker_color178</item>
+        <item>@color/tracker_color179</item>
+        <item>@color/tracker_color180</item>
+        <item>@color/tracker_color181</item>
+        <item>@color/tracker_color182</item>
+        <item>@color/tracker_color183</item>
+        <item>@color/tracker_color184</item>
+        <item>@color/tracker_color185</item>
+        <item>@color/tracker_color186</item>
+        <item>@color/tracker_color187</item>
+        <item>@color/tracker_color188</item>
+        <item>@color/tracker_color189</item>
+        <item>@color/tracker_color190</item>
+        <item>@color/tracker_color191</item>
+        <item>@color/tracker_color192</item>
+        <item>@color/tracker_color193</item>
+        <item>@color/tracker_color194</item>
+        <item>@color/tracker_color195</item>
+        <item>@color/tracker_color196</item>
+        <item>@color/tracker_color197</item>
+        <item>@color/tracker_color198</item>
+        <item>@color/tracker_color199</item>
+    </array>
 </resources>
