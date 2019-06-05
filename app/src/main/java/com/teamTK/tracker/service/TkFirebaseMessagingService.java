@@ -60,7 +60,7 @@ public class TkFirebaseMessagingService extends FirebaseMessagingService {
 
     private void sendNotification(String title, String content, String click_action) {
         if(title == null)
-            title = "TRACKER 알림입니다";
+            title = "TRACKER 알림";
 
         Intent intent;
         if (click_action.equals("MainActivity")) {
@@ -78,8 +78,8 @@ public class TkFirebaseMessagingService extends FirebaseMessagingService {
         final String CHANNEL_ID = "TRACKER_00";
         NotificationManager mManager = (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            final String CHANNEL_NAME = "TRACKER_DEV";
-            final String CHANNEL_DESCRIPTION = "TRACKER 애플리케이션 개발자 알림입니다.";
+            final String CHANNEL_NAME = "TRACKER";
+            final String CHANNEL_DESCRIPTION = "TRACKER 애플리케이션 알림입니다.";
             final int importance = NotificationManager.IMPORTANCE_HIGH;
 
             NotificationChannel mChannel = new NotificationChannel(CHANNEL_ID, CHANNEL_NAME, importance);

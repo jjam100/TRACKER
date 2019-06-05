@@ -34,7 +34,7 @@
 
     <Button
         android:id="@+id/saveBtn"
-        android:text="Save Password"
+        android:text="변경내용 저장"
         android:layout_width="200dp"
         android:layout_height="wrap_content" />
 

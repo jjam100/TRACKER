@@ -26,7 +26,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:layout_gravity="center_horizontal"
-        android:hint="Enter email"
+        android:hint="E-mail을 입력해 주세요"
         android:inputType="textEmailAddress" />
 
     <Button

@@ -41,11 +41,12 @@ public class FCMPush {
     public void sendMessage() {
         Gson gson = new Gson();
         NotificationModel notificationModel = new NotificationModel();
-        notificationModel.notification.title = "TRACKER DEV 알림";
-        notificationModel.notification.content = "이 알람은 TRACKER DEV용 알람입니다.";
-        notificationModel.notification.clickAction = "MainActivity";
-        notificationModel.data.title = "TRACKER DEV 알림";
-        notificationModel.data.content = "이 알람은 TRACKER DEV용 알람입니다.";
+        // background에서 수신이 되도록 하려면 컨텐츠를 notification이 아닌 data에 넣어야 한다!
+//        notificationModel.notification.title = "TRACKER DEV 알림";
+//        notificationModel.notification.content = "이 알람은 TRACKER DEV용 알람입니다.";
+//        notificationModel.notification.clickAction = "MainActivity";
+        notificationModel.data.title = "TRACKER 알림";
+        notificationModel.data.content = "오늘 하루는 어떠셨나요? TRACKER에 기록을 남겨보세요!";
         notificationModel.data.clickAction = "MainActivity";
 
         notificationModel.to = regToken;

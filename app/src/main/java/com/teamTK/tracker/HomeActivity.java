@@ -1,8 +1,12 @@
 package com.teamTK.tracker;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
@@ -33,7 +37,10 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.teamTK.tracker.common.Util9;
 import com.teamTK.tracker.model.UserModel;
+import com.teamTK.tracker.service.BroadcastD;
 import com.teamTK.tracker.service.FCMPush;
+
+import java.util.Calendar;
 
 public class HomeActivity extends AppCompatActivity implements View.OnClickListener {
     public static final int REQUEST_CODE_MENU = 104;
@@ -107,6 +114,9 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         buttonLogout.setOnClickListener(this);
         enterBtn.setOnClickListener(this);
         textivewDelete.setOnClickListener(this);
+
+        // PM 11:00에 푸시알림 발송
+        new PushHATT(getApplicationContext()).Push();
     }
 
     void getUserInfoFromServer(){
@@ -286,6 +296,33 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 }
             });
             alert_confirm.show();
+        }
+    }
+
+    // 푸시 알림 예약 클래스
+    public class PushHATT {
+        private Context context;
+        public PushHATT(Context context) {
+            this.context = context;
+        }
+        public void Push() {
+            Log.d(TAG, "푸시알림 등록");
+            AlarmManager am = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+            Intent intent = new Intent(HomeActivity.this, BroadcastD.class);
+            PendingIntent sender = PendingIntent.getBroadcast(HomeActivity.this, 0, intent, 0);
+
+            Calendar calendar = Calendar.getInstance();
+
+            calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DATE), 23, 0,0);
+
+            // 만약 알림 시간이 현재시간보다 이전이면, 다음날로 설정
+            if (calendar.before(Calendar.getInstance())) {
+                calendar.add(Calendar.DATE, 1);
+            }
+            am.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, sender);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                am.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), sender);
+            }
         }
     }
 }
