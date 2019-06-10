@@ -26,8 +26,6 @@ public class ResetPWActivity extends AppCompatActivity implements View.OnClickLi
     //define firebase object
     private FirebaseAuth firebaseAuth;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

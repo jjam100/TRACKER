@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
@@ -21,7 +20,16 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.gson.Gson;
+import com.teamTK.tracker.model.LegendColor;
+import com.teamTK.tracker.model.Tracker;
 import com.teamTK.tracker.model.UserModel;
+
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class SignUpActivity extends AppCompatActivity implements View.OnClickListener {
     //다른 액티비티를 띄우기 위한 요청코드(상수)
@@ -40,6 +48,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
     FirebaseAuth firebaseAuth;
     // FCM을 위한 단말의 등록 토큰
     String regToken;
+    Calendar cal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -115,6 +124,25 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
                             userModel.setUserid(email);
                             userModel.setUsernm(extractIDFromEmail(email));
                             userModel.setToken(regToken);
+
+                            List<Tracker> trackers = new ArrayList<Tracker>();
+                            List<LegendColor> legendColors = new ArrayList<>();
+                            Calendar cal;
+                            cal = Calendar.getInstance();
+
+                            // 범례 8개 고정
+                            for(int i = 1; i <= 8; i++) {
+                                legendColors.add(new LegendColor("항목"+i,"#FFFFFF",false));
+                            }
+
+                            // 트래커 5개 고정
+                            for(int i = 1; i <= 5; i++) {
+                                trackers.add(new Tracker((i == 1) ? "감정" : "트래커" + i, cal.get(cal.YEAR),cal.get(cal.MONTH),cal.get(cal.DATE), legendColors, null, false));
+                            }
+
+                            userModel.setTracker(trackers);
+
+
                             FirebaseDatabase.getInstance().getReference().child("users").child(uid).setValue(userModel).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {

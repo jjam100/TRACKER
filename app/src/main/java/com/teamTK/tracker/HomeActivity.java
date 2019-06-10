@@ -313,7 +313,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
             Calendar calendar = Calendar.getInstance();
 
-            calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DATE), 23, 0,0);
+            calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DATE), 23, 00,0);
 
             // 만약 알림 시간이 현재시간보다 이전이면, 다음날로 설정
             if (calendar.before(Calendar.getInstance())) {

@@ -8,7 +8,7 @@
     tools:context=".TrackerActivity">
 
     <TextView
-        android:id="@+id/Mood_head"
+        android:id="@+id/Tracker_head"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -28,36 +28,36 @@
 
     <Button
             android:id="@+id/dateblock01"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_below="@+id/Mood_head"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_below="@+id/Tracker_head"
             android:background="@android:color/darker_gray"
             app:layout_constraintBottom_toTopOf="@+id/dateblock08"
             app:layout_constraintEnd_toStartOf="@+id/dateblock02" />
 
     <Button
         android:id="@+id/dateblock02"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_below="@+id/Mood_head"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_below="@+id/Tracker_head"
         android:background="@android:color/darker_gray"
         app:layout_constraintBottom_toTopOf="@+id/dateblock09"
         app:layout_constraintEnd_toStartOf="@+id/dateblock03" />
 
     <Button
         android:id="@+id/dateblock03"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_below="@+id/Mood_head"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_below="@+id/Tracker_head"
         android:background="@android:color/darker_gray"
         app:layout_constraintBottom_toTopOf="@+id/dateblock10"
         app:layout_constraintEnd_toStartOf="@+id/dateblock04" />
 
     <Button
             android:id="@+id/dateblock04"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_below="@+id/Mood_head"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_below="@+id/Tracker_head"
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
             android:layout_marginEnd="8dp"
@@ -69,63 +69,63 @@
 
     <Button
             android:id="@+id/dateblock05"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_below="@+id/Mood_head"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_below="@+id/Tracker_head"
             android:background="@android:color/darker_gray"
             app:layout_constraintBottom_toTopOf="@+id/dateblock12"
             app:layout_constraintStart_toEndOf="@+id/dateblock04" />
 
         <Button
             android:id="@+id/dateblock06"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_below="@+id/Mood_head"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_below="@+id/Tracker_head"
             android:background="@android:color/darker_gray"
             app:layout_constraintBottom_toTopOf="@+id/dateblock13"
             app:layout_constraintStart_toEndOf="@+id/dateblock05" />
 
         <Button
             android:id="@+id/dateblock07"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_below="@+id/Mood_head"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_below="@+id/Tracker_head"
             android:background="@android:color/darker_gray"
             app:layout_constraintBottom_toTopOf="@+id/dateblock14"
             app:layout_constraintStart_toEndOf="@+id/dateblock06" />
 
     <Button
         android:id="@+id/dateblock08"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_below="@+id/Mood_head"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_below="@+id/Tracker_head"
         android:background="@android:color/darker_gray"
         app:layout_constraintBottom_toTopOf="@+id/dateblock15"
         app:layout_constraintEnd_toStartOf="@+id/dateblock09" />
 
     <Button
         android:id="@+id/dateblock09"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_below="@+id/Mood_head"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_below="@+id/Tracker_head"
         android:background="@android:color/darker_gray"
         app:layout_constraintBottom_toTopOf="@+id/dateblock16"
         app:layout_constraintEnd_toStartOf="@+id/dateblock10" />
 
     <Button
         android:id="@+id/dateblock10"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_below="@+id/Mood_head"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_below="@+id/Tracker_head"
         android:background="@android:color/darker_gray"
         app:layout_constraintBottom_toTopOf="@+id/dateblock17"
         app:layout_constraintEnd_toStartOf="@+id/dateblock11" />
 
     <Button
         android:id="@+id/dateblock11"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_below="@+id/Mood_head"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_below="@+id/Tracker_head"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginEnd="8dp"
@@ -137,36 +137,36 @@
 
     <Button
         android:id="@+id/dateblock12"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_below="@+id/Mood_head"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_below="@+id/Tracker_head"
         android:background="@android:color/darker_gray"
         app:layout_constraintBottom_toTopOf="@+id/dateblock19"
         app:layout_constraintStart_toEndOf="@+id/dateblock11" />
 
     <Button
         android:id="@+id/dateblock13"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_below="@+id/Mood_head"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_below="@+id/Tracker_head"
         android:background="@android:color/darker_gray"
         app:layout_constraintBottom_toTopOf="@+id/dateblock20"
         app:layout_constraintStart_toEndOf="@+id/dateblock12" />
 
     <Button
         android:id="@+id/dateblock14"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_below="@+id/Mood_head"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_below="@+id/Tracker_head"
         android:background="@android:color/darker_gray"
         app:layout_constraintBottom_toTopOf="@+id/dateblock21"
         app:layout_constraintStart_toEndOf="@+id/dateblock13" />
 
     <Button
         android:id="@+id/dateblock15"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_below="@+id/Mood_head"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_below="@+id/Tracker_head"
         android:background="@android:color/darker_gray"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/dateblock16"
@@ -174,9 +174,9 @@
 
     <Button
         android:id="@+id/dateblock16"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_below="@+id/Mood_head"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_below="@+id/Tracker_head"
         android:background="@android:color/darker_gray"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/dateblock17"
@@ -184,9 +184,9 @@
 
     <Button
         android:id="@+id/dateblock17"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_below="@+id/Mood_head"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_below="@+id/Tracker_head"
         android:background="@android:color/darker_gray"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/dateblock18"
@@ -194,9 +194,9 @@
 
     <Button
         android:id="@+id/dateblock18"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_below="@+id/Mood_head"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_below="@+id/Tracker_head"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
         android:background="@android:color/darker_gray"
@@ -209,9 +209,9 @@
 
     <Button
         android:id="@+id/dateblock19"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_below="@+id/Mood_head"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_below="@+id/Tracker_head"
         android:background="@android:color/darker_gray"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/dateblock18"
@@ -219,9 +219,9 @@
 
     <Button
         android:id="@+id/dateblock20"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_below="@+id/Mood_head"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_below="@+id/Tracker_head"
         android:background="@android:color/darker_gray"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/dateblock19"
@@ -229,9 +229,9 @@
 
     <Button
         android:id="@+id/dateblock21"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_below="@+id/Mood_head"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_below="@+id/Tracker_head"
         android:background="@android:color/darker_gray"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/dateblock20"
@@ -239,36 +239,36 @@
 
     <Button
         android:id="@+id/dateblock22"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_below="@+id/Mood_head"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_below="@+id/Tracker_head"
         android:background="@android:color/darker_gray"
         app:layout_constraintEnd_toStartOf="@+id/dateblock23"
         app:layout_constraintTop_toBottomOf="@+id/dateblock15" />
 
     <Button
         android:id="@+id/dateblock23"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_below="@+id/Mood_head"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_below="@+id/Tracker_head"
         android:background="@android:color/darker_gray"
         app:layout_constraintEnd_toStartOf="@+id/dateblock24"
         app:layout_constraintTop_toBottomOf="@+id/dateblock16" />
 
     <Button
         android:id="@+id/dateblock24"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_below="@+id/Mood_head"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_below="@+id/Tracker_head"
         android:background="@android:color/darker_gray"
         app:layout_constraintEnd_toStartOf="@+id/dateblock25"
         app:layout_constraintTop_toBottomOf="@+id/dateblock17" />
 
     <Button
             android:id="@+id/dateblock25"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_below="@+id/Mood_head"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_below="@+id/Tracker_head"
             android:background="@android:color/darker_gray"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.501"
@@ -277,63 +277,63 @@
 
     <Button
         android:id="@+id/dateblock26"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_below="@+id/Mood_head"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_below="@+id/Tracker_head"
         android:background="@android:color/darker_gray"
         app:layout_constraintStart_toEndOf="@+id/dateblock25"
         app:layout_constraintTop_toBottomOf="@+id/dateblock19" />
 
     <Button
         android:id="@+id/dateblock27"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_below="@+id/Mood_head"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_below="@+id/Tracker_head"
         android:background="@android:color/darker_gray"
         app:layout_constraintStart_toEndOf="@+id/dateblock26"
         app:layout_constraintTop_toBottomOf="@+id/dateblock20" />
 
     <Button
         android:id="@+id/dateblock28"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_below="@+id/Mood_head"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_below="@+id/Tracker_head"
         android:background="@android:color/darker_gray"
         app:layout_constraintStart_toEndOf="@+id/dateblock27"
         app:layout_constraintTop_toBottomOf="@+id/dateblock21" />
 
     <Button
         android:id="@+id/dateblock29"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_below="@+id/Mood_head"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_below="@+id/Tracker_head"
         android:background="@android:color/darker_gray"
         app:layout_constraintEnd_toStartOf="@+id/dateblock30"
         app:layout_constraintTop_toBottomOf="@+id/dateblock22" />
 
     <Button
         android:id="@+id/dateblock30"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_below="@+id/Mood_head"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_below="@+id/Tracker_head"
         android:background="@android:color/darker_gray"
         app:layout_constraintEnd_toStartOf="@+id/dateblock31"
         app:layout_constraintTop_toBottomOf="@+id/dateblock23" />
 
     <Button
         android:id="@+id/dateblock31"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_below="@+id/Mood_head"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_below="@+id/Tracker_head"
         android:background="@android:color/darker_gray"
         app:layout_constraintEnd_toStartOf="@+id/dateblock32"
         app:layout_constraintTop_toBottomOf="@+id/dateblock24" />
 
     <Button
             android:id="@+id/dateblock32"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_below="@+id/Mood_head"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_below="@+id/Tracker_head"
             android:background="@android:color/darker_gray"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.501"
@@ -342,63 +342,63 @@
 
     <Button
         android:id="@+id/dateblock33"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_below="@+id/Mood_head"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_below="@+id/Tracker_head"
         android:background="@android:color/darker_gray"
         app:layout_constraintStart_toEndOf="@+id/dateblock32"
         app:layout_constraintTop_toBottomOf="@+id/dateblock26" />
 
     <Button
         android:id="@+id/dateblock34"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_below="@+id/Mood_head"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_below="@+id/Tracker_head"
         android:background="@android:color/darker_gray"
         app:layout_constraintStart_toEndOf="@+id/dateblock33"
         app:layout_constraintTop_toBottomOf="@+id/dateblock27" />
 
     <Button
         android:id="@+id/dateblock35"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_below="@+id/Mood_head"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_below="@+id/Tracker_head"
         android:background="@android:color/darker_gray"
         app:layout_constraintStart_toEndOf="@+id/dateblock34"
         app:layout_constraintTop_toBottomOf="@+id/dateblock28" />
 
     <Button
         android:id="@+id/dateblock36"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_below="@+id/Mood_head"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_below="@+id/Tracker_head"
         android:background="@android:color/darker_gray"
         app:layout_constraintEnd_toStartOf="@+id/dateblock37"
         app:layout_constraintTop_toBottomOf="@+id/dateblock29" />
 
     <Button
         android:id="@+id/dateblock37"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_below="@+id/Mood_head"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_below="@+id/Tracker_head"
         android:background="@android:color/darker_gray"
         app:layout_constraintEnd_toStartOf="@+id/dateblock38"
         app:layout_constraintTop_toBottomOf="@+id/dateblock30" />
 
     <Button
         android:id="@+id/dateblock38"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_below="@+id/Mood_head"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_below="@+id/Tracker_head"
         android:background="@android:color/darker_gray"
         app:layout_constraintEnd_toStartOf="@+id/dateblock39"
         app:layout_constraintTop_toBottomOf="@+id/dateblock31" />
 
     <Button
         android:id="@+id/dateblock39"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_below="@+id/Mood_head"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_below="@+id/Tracker_head"
         android:background="@android:color/darker_gray"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
@@ -407,35 +407,35 @@
 
     <Button
             android:id="@+id/dateblock40"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_below="@+id/Mood_head"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_below="@+id/Tracker_head"
             android:background="@android:color/darker_gray"
             app:layout_constraintStart_toEndOf="@+id/dateblock39"
             app:layout_constraintTop_toBottomOf="@+id/dateblock33" />
 
     <Button
         android:id="@+id/dateblock41"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_below="@+id/Mood_head"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_below="@+id/Tracker_head"
         android:background="@android:color/darker_gray"
         app:layout_constraintStart_toEndOf="@+id/dateblock40"
         app:layout_constraintTop_toBottomOf="@+id/dateblock34" />
 
     <Button
         android:id="@+id/dateblock42"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_below="@+id/Mood_head"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_below="@+id/Tracker_head"
         android:background="@android:color/darker_gray"
         app:layout_constraintStart_toEndOf="@+id/dateblock41"
         app:layout_constraintTop_toBottomOf="@+id/dateblock35" />
 
     <TextView
         android:id="@+id/sunday"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:gravity="center_horizontal|center_vertical"
         android:text="일"
         android:textColor="@android:color/holo_red_light"
@@ -444,8 +444,8 @@
 
     <TextView
         android:id="@+id/monday"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:gravity="center_horizontal|center_vertical"
         android:text="월"
         android:textColor="@android:color/black"
@@ -454,8 +454,8 @@
 
     <TextView
         android:id="@+id/tuesday"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:gravity="center_horizontal|center_vertical"
         android:text="화"
         android:textColor="@android:color/black"
@@ -464,8 +464,8 @@
 
     <TextView
         android:id="@+id/wednesday"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:gravity="center_horizontal|center_vertical"
@@ -478,8 +478,8 @@
 
     <TextView
         android:id="@+id/thursday"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:gravity="center_horizontal|center_vertical"
         android:text="목"
         android:textColor="@android:color/black"
@@ -488,8 +488,8 @@
 
     <TextView
         android:id="@+id/friday"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:gravity="center_horizontal|center_vertical"
         android:text="금"
         android:textColor="@android:color/black"
@@ -498,8 +498,8 @@
 
     <TextView
         android:id="@+id/saturday"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:gravity="center_horizontal|center_vertical"
         android:text="토"
         android:textColor="@android:color/holo_blue_dark"
@@ -507,32 +507,33 @@
         app:layout_constraintStart_toEndOf="@+id/friday" />
 
     <ScrollView
-        android:layout_width="394dp"
-        android:layout_height="123dp"
+        android:id="@+id/scrollView2"
+        android:layout_width="324dp"
+        android:layout_height="135dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/dateblock39">
 
         <TableLayout
+            android:id="@+id/legend_list"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <TableRow
-                android:layout_gravity="center"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:padding="1dp"
-                >
+                android:layout_gravity="center"
+                android:padding="1dp">
 
                 <ImageView
                     android:id="@+id/legend_color1"
                     android:layout_width="25dp"
                     android:layout_height="25dp"
                     android:layout_marginLeft="20dp"
-                    app:srcCompat="@color/tracker_color2" />
+                    android:background="#F0FFF0" />
 
                 <TextView
                     android:id="@+id/legend_name1"
@@ -548,15 +549,14 @@
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:padding="1dp"
-                >
+                android:padding="1dp">
 
                 <ImageView
                     android:id="@+id/legend_color2"
                     android:layout_width="25dp"
                     android:layout_height="25dp"
                     android:layout_marginLeft="20dp"
-                    app:srcCompat="@color/tracker_color8" />
+                    android:background="#F0FFF0" />
 
                 <TextView
                     android:id="@+id/legend_name2"
@@ -568,13 +568,151 @@
                     android:textSize="20dp" />
 
             </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="1dp">
+
+                <ImageView
+                    android:id="@+id/legend_color3"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginLeft="20dp"
+                    android:background="#F0FFF0" />
+
+                <TextView
+                    android:id="@+id/legend_name3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:layout_marginLeft="20dp"
+                    android:text="범례3"
+                    android:textAlignment="center"
+                    android:textSize="20dp" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="1dp">
+
+                <ImageView
+                    android:id="@+id/legend_color4"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginLeft="20dp"
+                    android:background="#F0FFF0" />
+
+                <TextView
+                    android:id="@+id/legend_name4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:layout_marginLeft="20dp"
+                    android:text="범례4"
+                    android:textAlignment="center"
+                    android:textSize="20dp" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="1dp">
+
+                <ImageView
+                    android:id="@+id/legend_color5"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginLeft="20dp"
+                    android:background="#F0FFF0" />
+
+                <TextView
+                    android:id="@+id/legend_name5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:layout_marginLeft="20dp"
+                    android:text="범례5"
+                    android:textAlignment="center"
+                    android:textSize="20dp" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="1dp">
+
+                <ImageView
+                    android:id="@+id/legend_color6"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginLeft="20dp"
+                    android:background="#F0FFF0" />
+
+                <TextView
+                    android:id="@+id/legend_name6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:layout_marginLeft="20dp"
+                    android:text="범례6"
+                    android:textAlignment="center"
+                    android:textSize="20dp" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="1dp">
+
+                <ImageView
+                    android:id="@+id/legend_color7"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginLeft="20dp"
+                    android:background="#F0FFF0" />
+
+                <TextView
+                    android:id="@+id/legend_name7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:layout_marginLeft="20dp"
+                    android:text="범례7"
+                    android:textAlignment="center"
+                    android:textSize="20dp" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="1dp">
+
+                <ImageView
+                    android:id="@+id/legend_color8"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginLeft="20dp"
+                    android:background="#F0FFF0" />
+
+                <TextView
+                    android:id="@+id/legend_name8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:layout_marginLeft="20dp"
+                    android:text="범례8"
+                    android:textAlignment="center"
+                    android:textSize="20dp" />
+
+            </TableRow>
         </TableLayout>
     </ScrollView>
 
     <Button
         android:id="@+id/this_month"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="83dp"
+        android:layout_height="36dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
@@ -582,6 +720,37 @@
         app:layout_constraintBottom_toTopOf="@+id/wednesday"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Mood_head" />
+        app:layout_constraintTop_toBottomOf="@+id/Tracker_head" />
+
+    <Button
+        android:id="@+id/btn_back_list"
+        android:layout_width="219dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="뒤로 가기"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <View
+        android:id="@+id/divider3"
+        android:layout_width="395dp"
+        android:layout_height="1dp"
+        android:layout_marginBottom="8dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintBottom_toTopOf="@+id/btn_back_list"
+        tools:layout_editor_absoluteX="8dp" />
+
+    <Button
+        android:id="@+id/delete_tracker"
+        android:layout_width="94dp"
+        android:layout_height="41dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="24dp"
+        android:text="트래커 삭제"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

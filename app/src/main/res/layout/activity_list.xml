@@ -27,6 +27,44 @@
         android:layout_marginTop="50dp"
         android:text="감정" />
 
+
+    <Button
+        android:id="@+id/tracker_button2"
+        android:layout_width="249dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tracker_button1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:text="트래커2" />
+
+
+    <Button
+        android:id="@+id/tracker_button3"
+        android:layout_width="249dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tracker_button2"
+        android:layout_marginTop="19dp"
+        android:layout_centerHorizontal="true"
+        android:text="트래커3" />
+
+    <Button
+        android:id="@+id/tracker_button4"
+        android:layout_width="249dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tracker_button3"
+        android:layout_marginTop="19dp"
+        android:layout_centerHorizontal="true"
+        android:text="트래커4" />
+
+    <Button
+        android:id="@+id/tracker_button5"
+        android:layout_width="249dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tracker_button4"
+        android:layout_marginTop="19dp"
+        android:layout_centerHorizontal="true"
+        android:text="트래커5" />
+
     <Button
         android:id="@+id/list_back_button"
         android:layout_width="249dp"
@@ -36,13 +74,12 @@
         android:layout_marginBottom="49dp"
         android:text="뒤로가기" />
 
-    <Button
-        android:id="@+id/list_add_button"
-        android:layout_width="249dp"
-        android:layout_height="wrap_content"
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
         android:layout_above="@+id/list_back_button"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="20dp"
-        android:text="트래커 추가하기" />
+        android:layout_marginBottom="46dp"
+        android:background="?android:attr/listDivider" />
 
 </RelativeLayout>

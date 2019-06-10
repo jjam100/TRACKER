@@ -1,35 +1,38 @@
 package com.teamTK.tracker.model;
+import java.util.List;
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+import com.kakao.usermgmt.response.model.User;
 
 public class UserModel {
-    private String userid;
-    private String uid;
-    private String usernm;
+
+    @SerializedName("token")
+    @Expose
     private String token;
-    private String userphoto;
-    private Tracker[] trackers;
+    @SerializedName("uid")
+    @Expose
+    private String uid;
+    @SerializedName("userid")
+    @Expose
+    private String userid;
+    @SerializedName("usernm")
+    @Expose
+    private String usernm;
+    @SerializedName("tracker")
+    @Expose
+    private List<Tracker> tracker = null;
+    @SerializedName("userphoto")
+    @Expose
+    private String userphoto = null;
 
-    public String getUserid() {
-        return userid;
+
+
+    public String getUserphoto() {
+        return userphoto;
     }
 
-    public void setUserid(String userid) {
-        this.userid = userid;
-    }
-
-    public String getUid() {
-        return uid;
-    }
-
-    public void setUid(String uid) {
-        this.uid = uid;
-    }
-
-    public String getUsernm() {
-        return usernm;
-    }
-
-    public void setUsernm(String usernm) {
-        this.usernm = usernm;
+    public void setUserphoto(String userphoto) {
+        this.userphoto = userphoto;
     }
 
     public String getToken() {
@@ -40,17 +43,36 @@ public class UserModel {
         this.token = token;
     }
 
-    public String getUserphoto() {
-        return userphoto;
+    public String getUid() {
+        return uid;
     }
 
-    public void setUserphoto(String userphoto) {
-        this.userphoto = userphoto;
+    public void setUid(String uid) {
+        this.uid = uid;
     }
 
-    public Tracker[] getTrackers() { return trackers; }
-
-    public void setTrackers(Tracker[] trackers) {
-        this.trackers = trackers;
+    public String getUserid() {
+        return userid;
     }
+
+    public void setUserid(String userid) {
+        this.userid = userid;
+    }
+
+    public String getUsernm() {
+        return usernm;
+    }
+
+    public void setUsernm(String usernm) {
+        this.usernm = usernm;
+    }
+
+    public List<Tracker> getTracker() {
+        return tracker;
+    }
+
+    public void setTracker(List<Tracker> tracker) {
+        this.tracker = tracker;
+    }
+
 }

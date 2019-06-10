@@ -55,6 +55,8 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.teamTK.tracker.common.ObjectUtils;
 import com.teamTK.tracker.common.Util9;
+import com.teamTK.tracker.model.LegendColor;
+import com.teamTK.tracker.model.Tracker;
 import com.teamTK.tracker.model.UserModel;
 
 import org.json.JSONException;
@@ -64,6 +66,9 @@ import org.w3c.dom.Text;
 import java.io.File;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
 
 import io.fabric.sdk.android.Fabric;
 
@@ -71,6 +76,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     //다른 액티비티를 띄우기 위한 요청코드(상수)
     public static final int REQUEST_CODE_MENU = 101;
     private static final String TAG = "TkMS_MAIN";
+
     // 구글 로그인 구현을 위한 상수
     private static final int RC_SIGN_IN = 1000;
     private FirebaseAuth mAuth;
@@ -242,13 +248,34 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             FirebaseDatabase.getInstance().getReference().child("users").child(uid).addListenerForSingleValueEvent(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                                    Log.d(TAG, "이 값은 ? : " + ObjectUtils.isEmpty(dataSnapshot.getValue(UserModel.class)));
+//                                    Log.d(TAG, "이 값은 ? : " + ObjectUtils.isEmpty(dataSnapshot.getValue(UserModel.class)));
                                     if (ObjectUtils.isEmpty(dataSnapshot.getValue(UserModel.class))) {
+
                                         UserModel userModel = new UserModel();
                                         userModel.setUid(uid);
                                         userModel.setUserid(acct.getEmail());
                                         userModel.setUsernm(acct.getDisplayName());
                                         userModel.setToken(regToken);
+
+
+                                        List<Tracker> trackers = new ArrayList<Tracker>();
+                                        List<LegendColor> legendColors = new ArrayList<>();
+                                        Calendar cal;
+                                        cal = Calendar.getInstance();
+
+                                        // 범례 8개 고정
+                                        for(int i = 1; i <= 8; i++) {
+                                            legendColors.add(new LegendColor("항목"+i,"#FFFFFF", false));
+                                        }
+
+                                        // 트래커 5개 고정
+                                        for(int i = 1; i <= 5; i++) {
+                                            trackers.add(new Tracker((i == 1) ? "감정" : "트래커" + i, cal.get(cal.YEAR),cal.get(cal.MONTH),cal.get(cal.DATE), legendColors, null, false));
+                                        }
+
+                                        userModel.setTracker(trackers);
+
+
                                         FirebaseDatabase.getInstance().getReference().child("users").child(uid).setValue(userModel).addOnCompleteListener(new OnCompleteListener<Void>() {
                                             @Override
                                             public void onComplete(@NonNull Task<Void> task) {
@@ -298,6 +325,28 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                         userModel.setUserid(facebookEmail);
                                         userModel.setUsernm(Profile.getCurrentProfile().getName());
                                         userModel.setToken(regToken);
+
+
+                                        List<Tracker> trackers = new ArrayList<Tracker>();
+                                        List<LegendColor> legendColors = new ArrayList<>();
+                                        List<LegendColor> EmothionlegendColors = new ArrayList<>();
+                                        Calendar cal;
+                                        cal = Calendar.getInstance();
+
+                                        // 범례 8개 고정
+                                        for(int i = 1; i <= 8; i++) {
+                                            legendColors.add(new LegendColor("항목"+i,"#F0F0F0",false));
+                                        }
+
+
+                                        // 트래커 5개 고정
+                                        for(int i = 1; i <= 5; i++) {
+                                            trackers.add(new Tracker((i == 1) ? "감정" : "트래커" + i, cal.get(cal.YEAR),cal.get(cal.MONTH),cal.get(cal.DATE), legendColors, null, false));
+                                        }
+
+                                        userModel.setTracker(trackers);
+
+
                                         FirebaseDatabase.getInstance().getReference().child("users").child(uid).setValue(userModel).addOnCompleteListener(new OnCompleteListener<Void>() {
                                             @Override
                                             public void onComplete(@NonNull Task<Void> task) {

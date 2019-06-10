@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tracker_head"
+        android:layout_width="199dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="56dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="트래커 만들기"
+        android:textAlignment="center"
+        android:layout_gravity="center"
+        android:textColor="@android:color/black"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/forTrackerName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:text="트래커 이름"
+        android:textAlignment="textStart"
+        android:textColor="#3E3D3D"
+        android:textSize="15dp" />
+
+    <com.teamTK.tracker.common.ClearEditText
+        android:id="@+id/trackerName"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/forTrackerLegend"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginRight="20dp"
+        android:text="트래커에 사용할 항목들을 설정해 주세요.\n(최대 8개 까지)"
+        android:textColor="#3E3D3D"
+        android:textSize="15dp"
+        tools:textAlignment="center" />
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="3dp">
+
+            <ImageButton
+                android:id="@+id/create_legend_color1"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="#BBBBBB" />
+
+            <com.teamTK.tracker.common.ClearEditText
+                android:id="@+id/create_legend_name1"
+                android:layout_width="270dp"
+                android:layout_height="40dp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="3dp">
+
+            <ImageButton
+                android:id="@+id/create_legend_color2"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+
+                android:background="#BBBBBB" />
+
+            <com.teamTK.tracker.common.ClearEditText
+                android:id="@+id/create_legend_name2"
+                android:layout_width="270dp"
+                android:layout_height="40dp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="3dp">
+
+            <ImageButton
+                android:id="@+id/create_legend_color3"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="#BBBBBB" />
+
+            <com.teamTK.tracker.common.ClearEditText
+                android:id="@+id/create_legend_name3"
+                android:layout_width="270dp"
+                android:layout_height="40dp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="3dp">
+
+            <ImageButton
+                android:id="@+id/create_legend_color4"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="#BBBBBB" />
+
+            <com.teamTK.tracker.common.ClearEditText
+                android:id="@+id/create_legend_name4"
+                android:layout_width="270dp"
+                android:layout_height="40dp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="3dp">
+
+            <ImageButton
+                android:id="@+id/create_legend_color5"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="#BBBBBB" />
+
+            <com.teamTK.tracker.common.ClearEditText
+                android:id="@+id/create_legend_name5"
+                android:layout_width="270dp"
+                android:layout_height="40dp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="3dp">
+
+            <ImageButton
+                android:id="@+id/create_legend_color6"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="#BBBBBB" />
+
+            <com.teamTK.tracker.common.ClearEditText
+                android:id="@+id/create_legend_name6"
+                android:layout_width="270dp"
+                android:layout_height="40dp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="3dp">
+
+            <ImageButton
+                android:id="@+id/create_legend_color7"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="#BBBBBB" />
+
+            <com.teamTK.tracker.common.ClearEditText
+                android:id="@+id/create_legend_name7"
+                android:layout_width="270dp"
+                android:layout_height="40dp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="3dp">
+
+            <ImageButton
+                android:id="@+id/create_legend_color8"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="#BBBBBB" />
+
+            <com.teamTK.tracker.common.ClearEditText
+                android:id="@+id/create_legend_name8"
+                android:layout_width="270dp"
+                android:layout_height="40dp" />
+        </TableRow>
+
+    </TableLayout>
+
+    <Button
+        android:id="@+id/create_button"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|center_horizontal"
+        android:layout_marginTop="10dp"
+        android:text="저장" />
+
+
+</LinearLayout>

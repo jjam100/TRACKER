@@ -27,6 +27,8 @@
             <!--android:name="com.google.firebase.messaging.default_notification_channel_id"-->
             <!--android:value="@string/default_notification_channel_id"/>-->
 
+        <activity android:name=".createTrackerActivity" />
+        <activity android:name=".DailyActivity" />
         <activity android:name=".ChangePWActivity" />
         <activity android:name=".HomeActivity" />
         <activity android:name=".List" />

@@ -1,0 +1,56 @@
+{
+  "project_info": {
+    "project_number": "1080233141035",
+    "firebase_url": "https://trackedev.firebaseio.com",
+    "project_id": "trackedev",
+    "storage_bucket": "trackedev.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1080233141035:android:80680babf335d62f",
+        "android_client_info": {
+          "package_name": "com.teamTK.tracker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1080233141035-mem15l68j54mns8mf1v9bp8uka7lh7uh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.teamTK.tracker",
+            "certificate_hash": "47e009052ca47c1d3792c796783a30a620299c3e"
+          }
+        },
+        {
+          "client_id": "1080233141035-on8rnqubnlp58ljtqf7l5pl54n9ds0it.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.teamTK.tracker",
+            "certificate_hash": "3c3f5ce4ccf4a77363e5852155cb67dea78f1700"
+          }
+        },
+        {
+          "client_id": "1080233141035-7ldvdq1u0lhnstbrk5rl0bcq7t2dh4g4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDR9QJd3TsyfKkt0uUQWqR5SK_wVUoQx1I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1080233141035-7ldvdq1u0lhnstbrk5rl0bcq7t2dh4g4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
