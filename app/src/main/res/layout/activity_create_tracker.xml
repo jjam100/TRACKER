@@ -19,14 +19,15 @@
         android:layout_gravity="center"
         android:textColor="@android:color/black"
         android:textSize="30sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:visibility="gone"/>
 
     <TextView
         android:id="@+id/forTrackerName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="56dp"
         android:text="트래커 이름"
         android:textAlignment="textStart"
         android:textColor="#3E3D3D"
@@ -219,6 +220,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center|center_horizontal"
         android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
         android:text="저장" />
 
 

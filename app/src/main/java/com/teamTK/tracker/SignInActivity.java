@@ -2,10 +2,8 @@ package com.teamTK.tracker;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
@@ -134,8 +132,10 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
             userLogin();
         }
         if(view == textviewSignin) {
+            Intent intent = new Intent(this, SignUpActivity.class);
+            intent.putExtra("deviceToken", regToken);
+            startActivityForResult(intent, REQUEST_CODE_MENU);
             finish();
-            startActivity(new Intent(this, SignUpActivity.class));
         }
         if(view == textviewFindPassword) {
             finish();

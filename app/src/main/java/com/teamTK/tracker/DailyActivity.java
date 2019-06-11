@@ -2,13 +2,11 @@ package com.teamTK.tracker;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -113,6 +111,7 @@ public class DailyActivity extends AppCompatActivity {
                         Intent intent = new Intent(getApplicationContext(), List.class);
                         Toast.makeText(DailyActivity.this, "등록되었습니다! :)", Toast.LENGTH_LONG).show();
                         startActivityForResult(intent, 1001);
+                        finish();
                     }
 
                     @Override

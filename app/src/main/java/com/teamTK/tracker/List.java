@@ -79,6 +79,7 @@ public class List extends AppCompatActivity {
                                                intent.putExtra("order", finalI);
                                                intent.putExtra("datum",gson.toJson(extract.getData()));
                                                startActivityForResult(intent, sub);
+                                               finish();
                                            }
                                        });
                                    }
@@ -102,6 +103,7 @@ public class List extends AppCompatActivity {
                                                Intent intent = new Intent(getApplicationContext(), createTrackerActivity.class);
                                                intent.putExtra("data", data);
                                                startActivityForResult(intent, sub);
+                                               finish();
                                            }
                                        });
 

@@ -20,6 +20,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.gson.Gson;
+import com.teamTK.tracker.common.ObjectUtils;
 import com.teamTK.tracker.common.YearMonthPickerDialog;
 import com.teamTK.tracker.model.Datum;
 
@@ -234,14 +235,22 @@ public class TrackerActivity extends AppCompatActivity {
                     Intent intent = new Intent(getApplicationContext(), DailyActivity.class);
                     intent.putExtra("btnData",data);
                     startActivityForResult(intent, 1001);
+                    finish();
                 }
             });
         }
 
         // 색상 찍어내기
-        for(int i = 0; i < coloringData.length; i++) {
-            dateblock[coloringData[i].getDay() + firstDayOfWeek - 2].setBackgroundColor(Color.parseColor(exData.get(coloringData[i].getValue() * 3 + 2)));
-        }
+        if(ObjectUtils.isEmpty(coloringData)) {
 
+        } else {
+            for(int i = 0; i < coloringData.length; i++) {
+                Log.d("TkMS", "으아악" + coloringData[i].getYear() + coloringData[i].getMonth());
+                if(cal.get(cal.YEAR) == coloringData[i].getYear() && cal.get(cal.MONTH) + 1 == coloringData[i].getMonth())
+                {
+                    dateblock[coloringData[i].getDay() + firstDayOfWeek - 2].setBackgroundColor(Color.parseColor(exData.get(coloringData[i].getValue() * 3 + 2)));
+                }
+            }
+        }
     }
 }
