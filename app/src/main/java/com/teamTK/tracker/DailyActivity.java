@@ -2,7 +2,9 @@ package com.teamTK.tracker;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -10,12 +12,14 @@ import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.gson.Gson;
 import com.teamTK.tracker.model.Datum;
 
 import java.util.ArrayList;
@@ -27,13 +31,14 @@ public class DailyActivity extends AppCompatActivity {
     RadioButton[] legend = new RadioButton[8];
     Button buttonSave;
     RadioGroup legendCheck;
-
+    SwipeRefreshLayout swipeContainer;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_daily);
+
 
         // 데이터 수신
         Intent intent = getIntent();
@@ -44,6 +49,7 @@ public class DailyActivity extends AppCompatActivity {
         day = Integer.parseInt(data.get(2));
         trackerOrder = Integer.parseInt(data.get(3));
 
+        Log.wtf("수신 데이터", year + "/" + month + "/" + day);
 
         // 라디오 그룹
         legendCheck = (RadioGroup)findViewById(R.id.legendCheck);
@@ -96,6 +102,7 @@ public class DailyActivity extends AppCompatActivity {
                 // 파이어 베이스 연결
                 final String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
                 Datum inputData = new Datum(year,month,day,checkedValue);
+                Gson gson = new Gson();
                 FirebaseDatabase.getInstance().getReference().child("users").child(uid).child("tracker").child(trackerOrder+ "").child("size").addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -116,5 +123,5 @@ public class DailyActivity extends AppCompatActivity {
 
     }
 
-
 }
+

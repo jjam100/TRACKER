@@ -50,7 +50,7 @@ public class List extends AppCompatActivity {
                            for(int i = 0; i < 5; i++) {
                                if(list.size() != 0) {
                                    Tracker extract = gson.fromJson(gson.toJson(list.get(i)),Tracker.class);
-
+                                   Log.wtf("파싱값 : ", gson.toJson(extract));
                                    // 버튼 텍스트에 리스트 이름 지정
                                    trackerButton[i].setText(extract.getName());
                                    // Active 상태에 따라 표시여부 지정
