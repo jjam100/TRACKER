@@ -4,13 +4,13 @@ import com.google.gson.annotations.SerializedName;
 
 public class Datum {
 
-    @SerializedName("Year")
+    @SerializedName("year")
     @Expose
     private Integer year;
-    @SerializedName("Month")
+    @SerializedName("month")
     @Expose
     private Integer month;
-    @SerializedName("Day")
+    @SerializedName("day")
     @Expose
     private Integer day;
     @SerializedName("value")

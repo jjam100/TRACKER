@@ -1,10 +1,8 @@
 package com.teamTK.tracker;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -17,14 +15,10 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.MutableData;
-import com.google.firebase.database.Transaction;
 import com.google.firebase.database.ValueEventListener;
-import com.google.gson.Gson;
 import com.teamTK.tracker.model.Datum;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class DailyActivity extends AppCompatActivity {
 
@@ -108,6 +102,7 @@ public class DailyActivity extends AppCompatActivity {
                         // Incremental key를 만들기 위한 개삽질의 흔적
                         FirebaseDatabase.getInstance().getReference().child("users").child(uid).child("tracker").child(trackerOrder+ "").child("data").child(dataSnapshot.getValue() + "").setValue(inputData);
                         FirebaseDatabase.getInstance().getReference().child("users").child(uid).child("tracker").child(trackerOrder+ "").child("size").setValue(Integer.parseInt(String.valueOf(dataSnapshot.getValue())) + 1);
+                        finish();
                     }
 
                     @Override
