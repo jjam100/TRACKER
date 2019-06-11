@@ -29,6 +29,7 @@ import static com.teamTK.tracker.R.id;
 import static com.teamTK.tracker.R.layout;
 
 public class TrackerActivity extends AppCompatActivity {
+    public static final int sub = 1002;
     private TextView titleText;
     private Button thisMonth;
     private int[] tracker_colors;
@@ -40,14 +41,23 @@ public class TrackerActivity extends AppCompatActivity {
     private TextView deleteTracker;
     private int year;
     private int month;
+    private ArrayList<String> data;
+    private int trackerOrder;
+    private String gson;
 
     // 데이트 피커 리스너
     DatePickerDialog.OnDateSetListener d = new DatePickerDialog.OnDateSetListener() {
         @Override
         public void onDateSet(DatePicker view, int yearOfYear, int monthOfYear, int dayOfMonth){
             Log.d("TkMS", "year = " + year + ", month = " + monthOfYear + ", day = " + dayOfMonth);
-            year = yearOfYear;
-            month = monthOfYear;
+            Intent intent = new Intent(getApplicationContext(), TrackerActivity.class);
+            intent.putExtra("year", yearOfYear);
+            intent.putExtra("month", monthOfYear);
+            intent.putExtra("data", data);
+            intent.putExtra("order", trackerOrder);
+            intent.putExtra("datum",gson);
+            startActivityForResult(intent, sub);
+            finish();
         }
     };
 
@@ -58,12 +68,13 @@ public class TrackerActivity extends AppCompatActivity {
         thisMonth = (Button)findViewById(id.this_month);
 
         Intent intent = getIntent();
-        ArrayList<String> data = intent.getExtras().getStringArrayList("data");
+        data = intent.getExtras().getStringArrayList("data");
         year = intent.getExtras().getInt("year");
         month = intent.getExtras().getInt("month");
         titleText = (TextView)findViewById(R.id.Tracker_head);
         titleText.setText(data.get(0));
-        int trackerOrder = intent.getExtras().getInt("order");
+        trackerOrder = intent.getExtras().getInt("order");
+        gson = intent.getExtras().getString("datum");
         Log.wtf("아아아아아아아아아아아",intent.getExtras().getString("datum"));
 
         final String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
@@ -167,10 +178,13 @@ public class TrackerActivity extends AppCompatActivity {
     // 달력 구성
     // 입력 : 데이터 시작 연월일
     public void makeCalender(Button[] dateblock, Button thisMonth, Calendar cal, ArrayList<String> exData, int trackerOrder) {
-        int today = cal.get(cal.DATE); // 현재 일자
+        int today_year = cal.get(Calendar.YEAR);
+        int today_month = cal.get(Calendar.MONTH);
+        int today = cal.get(Calendar.DATE); // 현재 일자
         cal.set(Calendar.YEAR, year);
-        cal.set(Calendar.MONTH, month + 1);
-        cal.set(Calendar.DAY_OF_MONTH,1); // 왜 에러?
+        cal.set(Calendar.MONTH, month - 1);
+        cal.set(Calendar.DAY_OF_MONTH, 1); // 왜 에러?
+        Log.d("TkMS", cal.get(cal.YEAR) + "년 " + cal.get(cal.MONTH + 1) + "월" + today + "일");
         int firstDayOfWeek = cal.get(cal.DAY_OF_WEEK); // 해당 월 1일 요일
         int finalDay = cal.getActualMaximum(cal.DAY_OF_MONTH); // 해당 월 마지막 일자
 
@@ -180,9 +194,12 @@ public class TrackerActivity extends AppCompatActivity {
         for(int i = 0; i < 42; i++) {
             if(i >= firstDayOfWeek - 1 && i <= firstDayOfWeek + finalDay - 2) {
                 dateblock[i].setText("" + (i - firstDayOfWeek + 2));
-                Log.d("Tk_MS", "아" + String.valueOf(year) + " 젠 " + String.valueOf(cal.get(cal.YEAR)) + " 장 " + String.valueOf(month) + " 씻 " + String.valueOf(cal.get(cal.MONTH)));
-                if(year == cal.get(cal.YEAR) && month == cal.get(cal.MONTH) - 1 && i <= today + firstDayOfWeek - 2) {
+                Log.d("Tk_MS", "아" + String.valueOf(today_year) + " 젠 " + String.valueOf(cal.get(cal.YEAR)) + " 장 " + String.valueOf(today_month) + " 씻 " + String.valueOf(cal.get(cal.MONTH)));
+                if(today_year == cal.get(cal.YEAR) && today_month == cal.get(cal.MONTH) && i <= today + firstDayOfWeek - 2) {
                     //
+                    dateblock[i].setBackgroundColor(Color.parseColor("#FFFFFF"));
+                }
+                else if (today_year > cal.get(cal.YEAR) || today_month > cal.get(cal.MONTH)) {
                     dateblock[i].setBackgroundColor(Color.parseColor("#FFFFFF"));
                 }
                 else {
