@@ -8,6 +8,7 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -109,7 +110,9 @@ public class DailyActivity extends AppCompatActivity {
                         // Incremental key를 만들기 위한 개삽질의 흔적
                         FirebaseDatabase.getInstance().getReference().child("users").child(uid).child("tracker").child(trackerOrder+ "").child("data").child(dataSnapshot.getValue() + "").setValue(inputData);
                         FirebaseDatabase.getInstance().getReference().child("users").child(uid).child("tracker").child(trackerOrder+ "").child("size").setValue(Integer.parseInt(String.valueOf(dataSnapshot.getValue())) + 1);
-                        finish();
+                        Intent intent = new Intent(getApplicationContext(), List.class);
+                        Toast.makeText(DailyActivity.this, "등록되었습니다! :)", Toast.LENGTH_LONG).show();
+                        startActivityForResult(intent, 1001);
                     }
 
                     @Override
@@ -122,6 +125,5 @@ public class DailyActivity extends AppCompatActivity {
         });
 
     }
-
 }
 

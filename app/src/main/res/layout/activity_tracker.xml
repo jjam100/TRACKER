@@ -3,6 +3,7 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/tracker_activity_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#f2f2f2"
@@ -28,13 +29,13 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-            android:id="@+id/dateblock01"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_below="@+id/Tracker_head"
-            android:background="@android:color/darker_gray"
-            app:layout_constraintBottom_toTopOf="@+id/dateblock08"
-            app:layout_constraintEnd_toStartOf="@+id/dateblock02" />
+        android:id="@+id/dateblock01"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_below="@+id/Tracker_head"
+        android:background="@android:color/darker_gray"
+        app:layout_constraintBottom_toTopOf="@+id/dateblock08"
+        app:layout_constraintEnd_toStartOf="@+id/dateblock02" />
 
     <Button
         android:id="@+id/dateblock02"
@@ -55,45 +56,45 @@
         app:layout_constraintEnd_toStartOf="@+id/dateblock04" />
 
     <Button
-            android:id="@+id/dateblock04"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_below="@+id/Tracker_head"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            android:background="@android:color/darker_gray"
-            app:layout_constraintBottom_toTopOf="@+id/dateblock11"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+        android:id="@+id/dateblock04"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_below="@+id/Tracker_head"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:background="@android:color/darker_gray"
+        app:layout_constraintBottom_toTopOf="@+id/dateblock11"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-            android:id="@+id/dateblock05"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_below="@+id/Tracker_head"
-            android:background="@android:color/darker_gray"
-            app:layout_constraintBottom_toTopOf="@+id/dateblock12"
-            app:layout_constraintStart_toEndOf="@+id/dateblock04" />
+        android:id="@+id/dateblock05"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_below="@+id/Tracker_head"
+        android:background="@android:color/darker_gray"
+        app:layout_constraintBottom_toTopOf="@+id/dateblock12"
+        app:layout_constraintStart_toEndOf="@+id/dateblock04" />
 
-        <Button
-            android:id="@+id/dateblock06"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_below="@+id/Tracker_head"
-            android:background="@android:color/darker_gray"
-            app:layout_constraintBottom_toTopOf="@+id/dateblock13"
-            app:layout_constraintStart_toEndOf="@+id/dateblock05" />
+    <Button
+        android:id="@+id/dateblock06"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_below="@+id/Tracker_head"
+        android:background="@android:color/darker_gray"
+        app:layout_constraintBottom_toTopOf="@+id/dateblock13"
+        app:layout_constraintStart_toEndOf="@+id/dateblock05" />
 
-        <Button
-            android:id="@+id/dateblock07"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_below="@+id/Tracker_head"
-            android:background="@android:color/darker_gray"
-            app:layout_constraintBottom_toTopOf="@+id/dateblock14"
-            app:layout_constraintStart_toEndOf="@+id/dateblock06" />
+    <Button
+        android:id="@+id/dateblock07"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_below="@+id/Tracker_head"
+        android:background="@android:color/darker_gray"
+        app:layout_constraintBottom_toTopOf="@+id/dateblock14"
+        app:layout_constraintStart_toEndOf="@+id/dateblock06" />
 
     <Button
         android:id="@+id/dateblock08"
@@ -266,15 +267,15 @@
         app:layout_constraintTop_toBottomOf="@+id/dateblock17" />
 
     <Button
-            android:id="@+id/dateblock25"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_below="@+id/Tracker_head"
-            android:background="@android:color/darker_gray"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.501"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/dateblock18" />
+        android:id="@+id/dateblock25"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_below="@+id/Tracker_head"
+        android:background="@android:color/darker_gray"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dateblock18" />
 
     <Button
         android:id="@+id/dateblock26"
@@ -331,15 +332,15 @@
         app:layout_constraintTop_toBottomOf="@+id/dateblock24" />
 
     <Button
-            android:id="@+id/dateblock32"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_below="@+id/Tracker_head"
-            android:background="@android:color/darker_gray"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.501"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/dateblock25" />
+        android:id="@+id/dateblock32"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_below="@+id/Tracker_head"
+        android:background="@android:color/darker_gray"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dateblock25" />
 
     <Button
         android:id="@+id/dateblock33"
@@ -407,13 +408,13 @@
         app:layout_constraintTop_toBottomOf="@+id/dateblock32" />
 
     <Button
-            android:id="@+id/dateblock40"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_below="@+id/Tracker_head"
-            android:background="@android:color/darker_gray"
-            app:layout_constraintStart_toEndOf="@+id/dateblock39"
-            app:layout_constraintTop_toBottomOf="@+id/dateblock33" />
+        android:id="@+id/dateblock40"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_below="@+id/Tracker_head"
+        android:background="@android:color/darker_gray"
+        app:layout_constraintStart_toEndOf="@+id/dateblock39"
+        app:layout_constraintTop_toBottomOf="@+id/dateblock33" />
 
     <Button
         android:id="@+id/dateblock41"

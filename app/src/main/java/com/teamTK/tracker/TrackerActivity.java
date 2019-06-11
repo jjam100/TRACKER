@@ -19,7 +19,9 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.gson.Gson;
 import com.teamTK.tracker.common.YearMonthPickerDialog;
+import com.teamTK.tracker.model.Datum;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -75,7 +77,8 @@ public class TrackerActivity extends AppCompatActivity {
         titleText.setText(data.get(0));
         trackerOrder = intent.getExtras().getInt("order");
         gson = intent.getExtras().getString("datum");
-        Log.wtf("아아아아아아아아아아아",intent.getExtras().getString("datum"));
+        Gson gson = new Gson();
+        Datum[] coloringData = gson.fromJson(intent.getExtras().getString("datum"), Datum[].class);
 
         final String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
         FirebaseDatabase.getInstance().getReference().child("users").child(uid).child("tracker").child(trackerOrder + "").child("active").addValueEventListener(new ValueEventListener() {
@@ -106,7 +109,7 @@ public class TrackerActivity extends AppCompatActivity {
                         dateblock[i].setBackgroundColor(tracker_colors[140]);
                     }
                     // 달력 구성
-                    makeCalender(dateblock, thisMonth, cal, data, trackerOrder);
+                    makeCalender(dateblock, thisMonth, cal, data, trackerOrder,coloringData);
 
                     // 범례 구성
                     legendColors[0] = (ImageView)findViewById(R.id.legend_color1);
@@ -129,7 +132,6 @@ public class TrackerActivity extends AppCompatActivity {
 
                     for(int i = 1; i < data.size(); i+=3) {
                         if(data.get(i+2).equals("false")) {
-                            legendNames[(i-1)/3].setText("항목 추가 ");
                             legendNames[(i-1)/3].setTextSize(15);
                             legendColors[(i-1)/3].setBackgroundColor(Color.parseColor("#E0E0E0"));
                             legendNames[(i-1)/3].setOnClickListener(new View.OnClickListener(){
@@ -177,7 +179,7 @@ public class TrackerActivity extends AppCompatActivity {
 
     // 달력 구성
     // 입력 : 데이터 시작 연월일
-    public void makeCalender(Button[] dateblock, Button thisMonth, Calendar cal, ArrayList<String> exData, int trackerOrder) {
+    public void makeCalender(Button[] dateblock, Button thisMonth, Calendar cal, ArrayList<String> exData, int trackerOrder, Datum[] coloringData) {
         int today_year = cal.get(Calendar.YEAR);
         int today_month = cal.get(Calendar.MONTH);
         int today = cal.get(Calendar.DATE); // 현재 일자
@@ -194,7 +196,6 @@ public class TrackerActivity extends AppCompatActivity {
         for(int i = 0; i < 42; i++) {
             if(i >= firstDayOfWeek - 1 && i <= firstDayOfWeek + finalDay - 2) {
                 dateblock[i].setText("" + (i - firstDayOfWeek + 2));
-                Log.d("Tk_MS", "아" + String.valueOf(today_year) + " 젠 " + String.valueOf(cal.get(cal.YEAR)) + " 장 " + String.valueOf(today_month) + " 씻 " + String.valueOf(cal.get(cal.MONTH)));
                 if(today_year == cal.get(cal.YEAR) && today_month == cal.get(cal.MONTH) && i <= today + firstDayOfWeek - 2) {
                     //
                     dateblock[i].setBackgroundColor(Color.parseColor("#FFFFFF"));
@@ -236,5 +237,11 @@ public class TrackerActivity extends AppCompatActivity {
                 }
             });
         }
+
+        // 색상 찍어내기
+        for(int i = 0; i < coloringData.length; i++) {
+            dateblock[coloringData[i].getDay() + firstDayOfWeek - 2].setBackgroundColor(Color.parseColor(exData.get(coloringData[i].getValue() * 3 + 2)));
+        }
+
     }
 }
