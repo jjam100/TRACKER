@@ -1,16 +1,15 @@
 package com.teamTK.tracker;
 
-import android.annotation.SuppressLint;
-import android.app.ListActivity;
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.graphics.Color;
-import android.graphics.ColorSpace;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -20,13 +19,14 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.teamTK.tracker.common.YearMonthPickerDialog;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 
-import static com.teamTK.tracker.R.*;
+import static com.teamTK.tracker.R.array;
+import static com.teamTK.tracker.R.id;
+import static com.teamTK.tracker.R.layout;
 
 public class TrackerActivity extends AppCompatActivity {
     private TextView titleText;
@@ -37,16 +37,30 @@ public class TrackerActivity extends AppCompatActivity {
     private TextView[] legendNames = new TextView[8];
     private Calendar cal;
     private DatabaseReference colorDBref;
-    private Button deleteTracker;
+    private TextView deleteTracker;
+    private int year;
+    private int month;
 
+    // 데이트 피커 리스너
+    DatePickerDialog.OnDateSetListener d = new DatePickerDialog.OnDateSetListener() {
+        @Override
+        public void onDateSet(DatePicker view, int yearOfYear, int monthOfYear, int dayOfMonth){
+            Log.d("TkMS", "year = " + year + ", month = " + monthOfYear + ", day = " + dayOfMonth);
+            year = yearOfYear;
+            month = monthOfYear;
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(layout.activity_tracker);
+        thisMonth = (Button)findViewById(id.this_month);
 
         Intent intent = getIntent();
         ArrayList<String> data = intent.getExtras().getStringArrayList("data");
+        year = intent.getExtras().getInt("year");
+        month = intent.getExtras().getInt("month");
         titleText = (TextView)findViewById(R.id.Tracker_head);
         titleText.setText(data.get(0));
         int trackerOrder = intent.getExtras().getInt("order");
@@ -72,8 +86,7 @@ public class TrackerActivity extends AppCompatActivity {
                     tracker_colors = getResources().getIntArray(array.tracker_colors);
 
                     // 해당 월 버튼
-                    thisMonth = (Button)findViewById(id.this_month);
-                    thisMonth.setBackgroundColor(tracker_colors[140]);
+                    //thisMonth.setBackgroundColor(tracker_colors[140]);
 
                     // 데이트 블록들
                     // 01 : 0x7f09004f ~ 42 : 0x7f090078
@@ -123,7 +136,7 @@ public class TrackerActivity extends AppCompatActivity {
                     }
 
                     // 트래커 삭제
-                    deleteTracker = (Button)findViewById(id.delete_tracker);
+                    deleteTracker = (TextView) findViewById(id.delete_tracker);
                     if(trackerOrder == 0) {
                         deleteTracker.setVisibility(View.INVISIBLE);
                     }
@@ -141,36 +154,34 @@ public class TrackerActivity extends AppCompatActivity {
 
             }
         });
-
-//        if(firebaseAuth.getCurrentUser() != null){
-//            //이미 로그인 되었다면 이 액티비티를 종료함
-//            finish();
-//            //그리고 profile 액티비티를 연다.
-//            startActivity(new Intent(getApplicationContext(), HomeActivity.class)); //추가해 줄 ProfileActivity
-//        }
-
-
-
+        thisMonth.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                YearMonthPickerDialog pd = new YearMonthPickerDialog();
+                pd.setListener(d);
+                pd.show(getSupportFragmentManager(), "YearMonthPicker");;
+            }
+        });
     }
 
     // 달력 구성
     // 입력 : 데이터 시작 연월일
     public void makeCalender(Button[] dateblock, Button thisMonth, Calendar cal, ArrayList<String> exData, int trackerOrder) {
-        int year = cal.get(cal.YEAR); // 현재 연도
-        int month = cal.get(cal.MONTH) + 1; // 현재 월
         int today = cal.get(cal.DATE); // 현재 일자
-
+        cal.set(Calendar.YEAR, year);
+        cal.set(Calendar.MONTH, month + 1);
         cal.set(Calendar.DAY_OF_MONTH,1); // 왜 에러?
         int firstDayOfWeek = cal.get(cal.DAY_OF_WEEK); // 해당 월 1일 요일
         int finalDay = cal.getActualMaximum(cal.DAY_OF_MONTH); // 해당 월 마지막 일자
 
         // 해당 월 표시
-        thisMonth.setText(month + "월");
+        thisMonth.setText(year + "년 " + month + "월");
 
         for(int i = 0; i < 42; i++) {
             if(i >= firstDayOfWeek - 1 && i <= firstDayOfWeek + finalDay - 2) {
                 dateblock[i].setText("" + (i - firstDayOfWeek + 2));
-                if(i <= today + firstDayOfWeek - 2) {
+                Log.d("Tk_MS", "아" + String.valueOf(year) + " 젠 " + String.valueOf(cal.get(cal.YEAR)) + " 장 " + String.valueOf(month) + " 씻 " + String.valueOf(cal.get(cal.MONTH)));
+                if(year == cal.get(cal.YEAR) && month == cal.get(cal.MONTH) - 1 && i <= today + firstDayOfWeek - 2) {
                     //
                     dateblock[i].setBackgroundColor(Color.parseColor("#FFFFFF"));
                 }
@@ -208,6 +219,5 @@ public class TrackerActivity extends AppCompatActivity {
                 }
             });
         }
-
     }
 }

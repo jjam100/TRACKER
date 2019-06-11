@@ -245,7 +245,6 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         }
         if (view == enterBtn)
         {
-            finish();
             startActivity(new Intent(this, List.class));
         }
         //회원탈퇴를 클릭하면 회원정보를 삭제한다. 삭제전에 컨펌창을 하나 띄워야 겠다.

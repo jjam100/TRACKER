@@ -711,8 +711,8 @@
 
     <Button
         android:id="@+id/this_month"
-        android:layout_width="83dp"
-        android:layout_height="36dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
@@ -722,13 +722,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Tracker_head" />
 
-    <Button
+    <TextView
         android:id="@+id/delete_tracker"
         android:layout_width="94dp"
         android:layout_height="41dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="60dp"
         android:layout_marginEnd="24dp"
         android:text="트래커 삭제"
+        android:textAlignment="center"
+        android:textColor="@color/colorAccent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
