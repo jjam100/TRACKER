@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="70dp"
         android:text="TRACKING LIST"
         android:textColor="@android:color/black"
         android:textSize="30sp" />
@@ -64,22 +64,5 @@
         android:layout_marginTop="19dp"
         android:layout_centerHorizontal="true"
         android:text="트래커5" />
-
-    <Button
-        android:id="@+id/list_back_button"
-        android:layout_width="249dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="49dp"
-        android:text="뒤로가기" />
-
-    <View
-        android:id="@+id/divider"
-        android:layout_width="match_parent"
-        android:layout_height="10dp"
-        android:layout_above="@+id/list_back_button"
-        android:layout_marginBottom="46dp"
-        android:background="?android:attr/listDivider" />
 
 </RelativeLayout>
